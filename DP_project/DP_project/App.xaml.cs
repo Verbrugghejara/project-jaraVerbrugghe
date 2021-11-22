@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DP_project.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace DP_project
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+           // MainPage = new MainPage();
+            MainPage = new NavigationPage(new OverviewProjects());
         }
 
         protected override void OnStart()
