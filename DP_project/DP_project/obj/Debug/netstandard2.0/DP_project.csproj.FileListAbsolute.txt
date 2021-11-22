@@ -1,0 +1,15 @@
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\bin\Debug\netstandard2.0\DP_project.deps.json
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\bin\Debug\netstandard2.0\DP_project.dll
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\bin\Debug\netstandard2.0\ref\DP_project.dll
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\bin\Debug\netstandard2.0\DP_project.pdb
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.csproj.AssemblyReference.cache
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.GeneratedMSBuildEditorConfig.editorconfig
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.AssemblyInfoInputs.cache
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.AssemblyInfo.cs
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.csproj.CoreCompileInputs.cache
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\XamlC.stamp
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.dll
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\ref\DP_project.dll
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.pdb
