@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DP_project.Views.OverviewProjects">
-    <ContentPage.Content>
-        <ListView x:Name="lvwProjects" SeparatorColor="White" ItemSelected="lvwProjects_ItemSelected" >
-            <ListView.ItemTemplate>
+    <StackLayout>
+        
+    <ListView x:Name="lvwProjects" SeparatorColor="White" ItemSelected="lvwProjects_ItemSelected" >
+        <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
@@ -21,5 +22,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </ContentPage.Content>
+        <Button x:Name="btnCreate" FontAttributes="None" FontSize="30" Text="Create Project"/>
+    </StackLayout>
 </ContentPage>

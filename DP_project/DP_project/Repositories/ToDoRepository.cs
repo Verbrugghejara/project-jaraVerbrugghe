@@ -16,21 +16,9 @@ namespace DP_project.Repositories
         private const string _URL = "https://api.todoist.com/rest/v1/";
 
 
-        private static HttpClient GetClientTask(string id)
-        {
-            HttpClient client = new HttpClient();
-            var reuqestId = Guid.NewGuid();
-            client.DefaultRequestHeaders.Add("X-Request-Id", reuqestId.ToString());
-            client.DefaultRequestHeaders.Add("accept", "application/json");
-            //client.DefaultRequestHeaders.Add("Content-Type", "application/json");
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer" + " " + _APIKEY);
-            client.DefaultRequestHeaders.TryAddWithoutValidation("project_id", id);
+       
 
-
-            //client.DefaultRequestHeaders.Add("X-Request-Id", myuuid.ToString());
-            return client;
-
-        }
+        
         private static HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
@@ -53,6 +41,10 @@ namespace DP_project.Repositories
         {
             return $"{_URL}{topic}/{id}";
         }
+        private static string AddTopic3(string topic, uint id)
+        {
+            return $"{_URL}{topic}/{id}";
+        }
         private static string AddTopicWithId(string topic, string id)
         {
             return $"{_URL}{topic}?project_id={id}";
@@ -60,11 +52,11 @@ namespace DP_project.Repositories
 
         //------------------------------------------------ TASKS -------------------------------------------------
 
-        public static async Task<List<Note>> GetTasksAsync(string id)
+        public static async Task<List<Note>> GetTasksAsync(uint id)
 
         {
             List<Note> lists = new List<Note>();
-            using (HttpClient client = GetClientTask(id))
+            using (HttpClient client = GetClient())
             {
                 try
                 {
@@ -131,7 +123,7 @@ namespace DP_project.Repositories
 
                     if (!response.IsSuccessStatusCode)
                     {
-                        throw new Exception("Something went wrong with the update of ToDoList");
+                        throw new Exception("Something went wrong with the update of task");
                     }
                     Debug.WriteLine("gelukt");
                 }
@@ -157,7 +149,8 @@ namespace DP_project.Repositories
 
                     if (!response.IsSuccessStatusCode)
                     {
-                        throw new Exception("Something went wrong with the update of ToDoList");
+                        var result = response.StatusCode.ToString();
+                        Debug.WriteLine(result);
                     }
                     Debug.WriteLine("gelukt");
                 }
@@ -215,13 +208,13 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task<List<Project>> GetProjectByIdAsync(string id)
+        public static async Task<List<Project>> GetProjectByIdAsync(uint id)
         {
             using (HttpClient client = GetClient())
             {
                 try
                 {
-                    string url = AddTopic2("projects", id);
+                    string url = AddTopic3("projects", id);
                     string json = await client.GetStringAsync(url);
                     if (json != null)
                     {
@@ -243,7 +236,10 @@ namespace DP_project.Repositories
             {
                 try
                 {
-                    string url = AddTopic2("projects", project.Id);
+
+                    //int n = project.Id;
+                    //uint i = Convert.ToUInt32(n);
+                    string url = AddTopic3("projects", project.Id);
 
 
                     string json = JsonConvert.SerializeObject(project); //serialize is om van variabele naar een string te gaan

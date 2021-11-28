@@ -19,12 +19,31 @@ namespace DP_project.Views
             InitializeComponent();
             ShowProjects();
             TestRepositories();
+            btnCreate.Clicked += btnCreate_Clicked;
         }
 
+        private async void btnCreate_Clicked(object sender, EventArgs e)
+        {
+            List<Project> projects = await ToDoRepository.GetProjectsAsync();
+            await Navigation.PushAsync(new CreateProject());
+            lvwProjects.SelectedItem = null;
+        }
+
+        public string GenerateNumber()
+        {
+            Random random = new Random();
+            string r = "";
+            int i;
+            for (i = 1; i < 11; i++)
+            {
+                r += random.Next(0, 9).ToString();
+            }
+            return r;
+        }
         private async void TestRepositories()
         {
             //5335833201
-            List<Note> tasks = await ToDoRepository.GetTasksAsync("2278575903");
+            List<Note> tasks = await ToDoRepository.GetTasksAsync(2278576258);
             ////var taskid = tasks[0].Id;
             ////await ToDoListRepository.DeleteTask(taskid);
             ////List<ToDoTask> tasks1 = await ToDoListRepository.GetTasksAsync();
@@ -35,16 +54,16 @@ namespace DP_project.Views
             {
                 Debug.WriteLine(itemt.Id);
                 Debug.WriteLine(itemt.Name);
-                Debug.WriteLine(itemt.SectionId);
                 Debug.WriteLine("project id");
                 Debug.WriteLine(itemt.ProjectId);
             }
 
             List<Project> projects = await ToDoRepository.GetProjectsAsync();
 
-            //Projects project1 = projects[4];
-            //project1.Name = "project nr 7";
-            //await ToDoListRepository.CreateProject(project1);
+            //Project project1 = projects[2];
+            //project1.Id = GenerateNumber().ToString();
+            //project1.Name = "laatste project";
+            //await ToDoRepository.CreateProject(project1);
 
 
             //var projectid = projects[1].Id;
@@ -70,13 +89,15 @@ namespace DP_project.Views
             //    Debug.WriteLine(item.Id);
             //    Debug.WriteLine(item.Name);
             //}
-            ////ToDoTask toDoTask = tasks[12];
-            ////toDoTask.Name = "Veranderd";
-            ////await ToDoListRepository.UpdateTask(toDoTask);
-
-            ////ToDoTask task1 = tasks[0];
-            ////task1.Name = "Eindelijk het werkt";
-            ////await ToDoListRepository.CreateTask(task1);
+            //Note toDoTask = tasks[1];
+            //toDoTask.Name = "note veranderd";
+            //await ToDoRepository.UpdateTask(toDoTask);
+            ///
+            //Note note = new Note();
+            //note.Id = GenerateNumber().ToString();
+            //note.Name = "start";
+            //note.ProjectId = 2278576258;
+            //await ToDoRepository.CreateTask(note);
 
             //Debug.WriteLine("Test task by id------------------------");
             //List<ToDoTask> task = await ToDoListRepository.GetTasksByIDAsync(tasks[0].Id);

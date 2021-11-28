@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DP_project.Views.CreateTask">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label HorizontalOptions="Center" Text="Create" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
+            <Frame>
+                <StackLayout>
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <Label VerticalOptions="Center" Grid.Column="0" Text="Content" FontAttributes="Bold"/>
+                        <Entry x:Name="entContent" Grid.Column="1"  Placeholder="Task" TextColor="Black" VerticalOptions="Center" />
+                        
+
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+
+
+            <Button  x:Name="btnCreate" Grid.Column="2" Text="Save"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -11,9 +11,7 @@ namespace DP_project.Models
         public string Id { get; set; }
         [JsonProperty(propertyName: "content")]
         public string Name { get; set; }
-        [JsonProperty(propertyName: "section_id")]
-        public string SectionId { get; set; }
         [JsonProperty(propertyName: "project_id")]
-        public string ProjectId { get; set; }
+        public uint ProjectId { get; set; }
     }
 }

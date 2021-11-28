@@ -8,7 +8,7 @@ namespace DP_project.Models
     public class Project
     {
         [JsonProperty(propertyName: "id")]
-        public string Id { get; set; }
+        public uint Id { get; set; }
         [JsonProperty(propertyName: "name")]
         public string Name { get; set; }
         [JsonProperty(propertyName: "favorite")]

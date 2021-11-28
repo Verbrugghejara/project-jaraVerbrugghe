@@ -2,7 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DP_project.Views.SingleProjectPage">
-    <ListView x:Name="lvwSections" SeparatorColor="White"  >
+    <StackLayout>
+        <ListView HeightRequest="50" x:Name="lvwProjectName">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Padding="0,8,0,0"  HorizontalOptions="Center" Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="lvwSections" SeparatorColor="White" ItemSelected="lvwSections_ItemSelected"  >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -20,4 +32,6 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+        <Button x:Name="btnCreate" FontAttributes="None" FontSize="30" Text="Create Task"/>
+    </StackLayout>
 </ContentPage>
