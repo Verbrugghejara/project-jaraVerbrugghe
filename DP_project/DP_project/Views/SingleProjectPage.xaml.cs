@@ -30,8 +30,8 @@ namespace DP_project.Views
         {
             //uint n = MyProject.Id;
             //uint i = Convert.ToUInt32(n);
-            List<Note> tasks = await ToDoRepository.GetTasksAsync(MyProject.Id);
-            await Navigation.PushAsync(new CreateTask(tasks[0], MyProject));
+            Note task = new Note();
+            await Navigation.PushAsync(new CreateTask(task, MyProject));
             lvwSections.SelectedItem = null;
            
         }

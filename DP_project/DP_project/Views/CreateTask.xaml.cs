@@ -31,9 +31,22 @@ namespace DP_project.Views
             Debug.WriteLine(MyNote.ProjectId);
             Debug.WriteLine("hoi");
             Note note = MyNote;
+            note.Id = GenerateNumber().ToString();
             note.Name = content;
+            note.ProjectId = MyProject.Id;
             await ToDoRepository.CreateTask(note);
             await Navigation.PushAsync(new SingleProjectPage(MyProject));
+        }
+        public string GenerateNumber()
+        {
+            Random random = new Random();
+            string r = "";
+            int i;
+            for (i = 1; i < 11; i++)
+            {
+                r += random.Next(0, 9).ToString();
+            }
+            return r;
         }
     }
 }
