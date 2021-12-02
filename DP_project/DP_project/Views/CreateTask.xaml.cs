@@ -15,9 +15,9 @@ namespace DP_project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateTask : ContentPage
     {
-        public Note MyNote { get; set; }
+        public Item MyNote { get; set; }
         public Project MyProject { get; set; }
-        public CreateTask(Note note, Project project)
+        public CreateTask(Item note, Project project)
         {
             InitializeComponent();
             btnCreate.Clicked += BtnCreate_Clicked;
@@ -30,7 +30,7 @@ namespace DP_project.Views
             string content = entContent.Text;
             Debug.WriteLine(MyNote.ProjectId);
             Debug.WriteLine("hoi");
-            Note note = MyNote;
+            Item note = MyNote;
             note.Id = GenerateNumber().ToString();
             note.Name = content;
             note.ProjectId = MyProject.Id;

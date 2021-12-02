@@ -24,7 +24,6 @@ namespace DP_project.Views
 
         private async void btnCreate_Clicked(object sender, EventArgs e)
         {
-            List<Project> projects = await ToDoRepository.GetProjectsAsync();
             await Navigation.PushAsync(new CreateProject());
             lvwProjects.SelectedItem = null;
         }
@@ -48,15 +47,23 @@ namespace DP_project.Views
             List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(2278576258);
             foreach (var itemt in tasks)
             {
-                Debug.WriteLine(itemt.id);
-                Debug.WriteLine(itemt.content);
+                Debug.WriteLine(itemt.Id);
+                Debug.WriteLine(itemt.Name);
                 Debug.WriteLine("project id");
-                Debug.WriteLine(itemt.project_id);
+                Debug.WriteLine(itemt.ProjectId);
             }
             //////var taskid = tasks[0].Id;
             //////await ToDoListRepository.DeleteTask(taskid);
             //////List<ToDoTask> tasks1 = await ToDoListRepository.GetTasksAsync();
 
+            List<Item> taskss = await ToDoRepository.GetTasksByProjectIdAsync(2278576258);
+            foreach (var itemt in taskss)
+            {
+                Debug.WriteLine(itemt.Id);
+                Debug.WriteLine(itemt.Name);
+                Debug.WriteLine("project id");
+                Debug.WriteLine(itemt.ProjectId);
+            }
             Debug.WriteLine("Test tasks--------------------------");
             //Debug.WriteLine($"De aantal tasks zijn {tasks.Count()}");
             //foreach (var itemt in tasks)

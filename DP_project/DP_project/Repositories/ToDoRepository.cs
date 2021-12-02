@@ -51,7 +51,7 @@ namespace DP_project.Repositories
         //}
 
         //------------------------------------------------ TASKS -------------------------------------------------
-        public static async Task<List<Note>> GetAllTasksAsync()
+        public static async Task<List<Item>> GetAllTasksAsync()
 
         {
             using (HttpClient client = GetClient())
@@ -64,7 +64,7 @@ namespace DP_project.Repositories
                     {
                         //var o = JObject.Parse(json);
                         Debug.WriteLine("klaar");
-                        var jsonString = JsonConvert.DeserializeObject<List<Note>>(json);
+                        var jsonString = JsonConvert.DeserializeObject<List<Item>>(json);
                        
 
 
@@ -79,10 +79,10 @@ namespace DP_project.Repositories
             }
         }
 
-        public static async Task<List<Note>> GetTasksByProjectIdAsync(uint id)
+        public static async Task<List<Item>> GetTasksByProjectIdAsync(uint id)
 
         {
-            List<Note> lists = new List<Note>();
+            List<Item> lists = new List<Item>();
             using (HttpClient client = GetClient())
             {
                 try
@@ -93,7 +93,7 @@ namespace DP_project.Repositories
                     {
                         //var o = JObject.Parse(json);
                         Debug.WriteLine("klaar");
-                        var jsonString = JsonConvert.DeserializeObject<List<Note>>(json);
+                        var jsonString = JsonConvert.DeserializeObject<List<Item>>(json);
                         foreach (var itemt in jsonString)
                         {
                             if (itemt.ProjectId == id)
@@ -113,7 +113,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task<List<Note>> GetTasksByIDAsync(string id)
+        public static async Task<List<Item>> GetTasksByIDAsync(string id)
         {
             using (HttpClient client = GetClient())
             {
@@ -124,7 +124,7 @@ namespace DP_project.Repositories
                     if (json != null)
                     {
                         //var o = JObject.Parse(json);
-                        return JsonConvert.DeserializeObject<List<Note>>("[" + json + "]");
+                        return JsonConvert.DeserializeObject<List<Item>>("[" + json + "]");
                     }
                     return null;
                 }
@@ -135,7 +135,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task UpdateTask(Note toDoTask)
+        public static async Task UpdateTask(Item toDoTask)
         {
             using (HttpClient client = GetClient())
             {
@@ -161,7 +161,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task CreateTask(Note toDoTask)
+        public static async Task CreateTask(Item toDoTask)
         {
             using (HttpClient client = GetClient())
             {
@@ -211,7 +211,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task<List<Note>> GetTasksCompletedAsync()
+        public static async Task<List<Item>> GetTasksCompletedAsync()
 
         {
             using (HttpClient client = GetClient())
@@ -260,7 +260,7 @@ namespace DP_project.Repositories
                         {
                             foreach (var item in itemt.items)
                             {
-                                if (item.project_id == project_id)
+                                if (item.ProjectId == project_id)
                                 {
                                     lists.Add(item);
                                 }

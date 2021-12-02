@@ -5,6 +5,7 @@ using System.Text;
 
 namespace DP_project.Models
 {
+    
     public class Note
     {
         [JsonProperty(propertyName: "id")]

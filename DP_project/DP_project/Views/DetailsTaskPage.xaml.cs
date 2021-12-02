@@ -15,9 +15,9 @@ namespace DP_project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsTaskPage : ContentPage
     {
-        public Note MyNote { get; set; }
+        public Item MyNote { get; set; }
         public Project MyProject { get; set; }
-        public DetailsTaskPage(Note note, Project project)
+        public DetailsTaskPage(Item note, Project project)
         {
             InitializeComponent();
             btnSave.Clicked += BtnSave_Clicked;
@@ -29,7 +29,7 @@ namespace DP_project.Views
 
         private async void ShowNameTask()
         {
-            List<Note> tasks = await ToDoRepository.GetTasksByIDAsync(MyNote.Id);
+            List<Item> tasks = await ToDoRepository.GetTasksByIDAsync(MyNote.Id);
             lvwTaskName.ItemsSource = tasks;
         }
 
@@ -46,7 +46,7 @@ namespace DP_project.Views
             {
                 string content = entContent.Text;
 
-                Note task1 = MyNote;
+                Item task1 = MyNote;
                 task1.Name = content;
                 await ToDoRepository.UpdateTask(task1);
                 await Navigation.PushAsync(new SingleProjectPage(MyProject));

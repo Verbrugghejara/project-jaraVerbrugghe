@@ -31,7 +31,7 @@ namespace DP_project.Views
         {
             //uint n = MyProject.Id;
             //uint i = Convert.ToUInt32(n);
-            Note task = new Note();
+            Item task = new Item();
             await Navigation.PushAsync(new CreateTask(task, MyProject));
             lvwSections.SelectedItem = null;
            
@@ -41,9 +41,12 @@ namespace DP_project.Views
         {
             //uint n = MyProject.Id;
             //uint i = Convert.ToUInt32(n);
+            
             List<Project> project = await ToDoRepository.GetProjectByIdAsync(MyProject.Id);
-            List<Note> tasks = await ToDoRepository.GetTasksByProjectIdAsync(MyProject.Id);
+            List<Item> items = await ToDoRepository.GetTasksCompletedByProjectIdAsync(MyProject.Id);
+            List<Item> tasks = await ToDoRepository.GetTasksByProjectIdAsync(MyProject.Id);
             lvwSections.ItemsSource = tasks;
+            lvwSections.ItemsSource = items;
             lvwProjectName.ItemsSource = project;
         }
 
@@ -51,7 +54,7 @@ namespace DP_project.Views
         {
             if (lvwSections.SelectedItem != null)
             {
-                Note note = (Note)lvwSections.SelectedItem;
+                Item note = (Item)lvwSections.SelectedItem;
                 Navigation.PushAsync(new DetailsTaskPage(note, MyProject));
             }
         }
@@ -59,7 +62,7 @@ namespace DP_project.Views
         private async void Checkbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             var cb = (CheckBox)sender;
-            var item = (Note)cb.BindingContext;
+            var item = (Item)cb.BindingContext;
             var id = item.Id;
             if (cb.IsChecked == true)
             {

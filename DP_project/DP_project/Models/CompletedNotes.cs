@@ -16,13 +16,12 @@ namespace DP_project.Models
 
     public class Item
     {
-        public DateTime completed_date { get; set; }
-        public string content { get; set; }
-        public long id { get; set; }
-        public object meta_data { get; set; }
-        public long project_id { get; set; }
-        public long task_id { get; set; }
-        public int user_id { get; set; }
+        [JsonProperty(propertyName: "id")]
+        public string Id { get; set; }
+        [JsonProperty(propertyName: "content")]
+        public string Name { get; set; }
+        [JsonProperty(propertyName: "project_id")]
+        public long ProjectId { get; set; }
     }
 
 
