@@ -26,8 +26,6 @@ namespace DP_project.Models
         public long ProjectId { get; set; }
         [JsonProperty(propertyName: "completed")]
         public bool Completed { get; set; }
-        [JsonProperty(propertyName: "completed_date")]
-        public DateTime CompletedDate { get; set; }
     }
 
 

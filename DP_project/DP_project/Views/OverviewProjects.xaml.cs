@@ -41,17 +41,29 @@ namespace DP_project.Views
         }
         private async void TestRepositories()
         {
-            
+
             //await ToDoRepository.TaskCloseAsync("5369881243");
             //5335833201
-            List<Item> tasks = await ToDoRepository.GetAllTasksAsync(2278576258);
-            foreach (var itemt in tasks)
+            //List<Item> tasks = await ToDoRepository.GetAllTasksAsync(2278576258);
+            //foreach (var itemt in tasks)
+            //{
+            //    Debug.WriteLine(itemt.Id);
+            //    Debug.WriteLine(itemt.Name);
+            //    Debug.WriteLine("project id");
+            //    Debug.WriteLine(itemt.ProjectId);
+            //    Debug.WriteLine(itemt.Completed);
+            //}
+            List<Project> projects = await ToDoRepository.GetProjectsAsync();
+            foreach (var project in projects)
             {
-                Debug.WriteLine(itemt.Id);
-                Debug.WriteLine(itemt.Name);
-                Debug.WriteLine("project id");
-                Debug.WriteLine(itemt.ProjectId);
-                Debug.WriteLine(itemt.Completed);
+                List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
+                Debug.WriteLine(tasks.Count);
+
+                foreach (var item in tasks)
+                {
+                    Debug.WriteLine(item.Name);
+                }
+                
             }
             //////var taskid = tasks[0].Id;
             //////await ToDoListRepository.DeleteTask(taskid);
@@ -160,6 +172,27 @@ namespace DP_project.Views
         private async void ShowProjects()
         {
             List<Project> projects = await ToDoRepository.GetProjectsAsync();
+            //foreach (var project in projects)
+            //{
+            //    List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
+            //    Debug.WriteLine(tasks.Count);
+
+            //    foreach (var item in tasks)
+            //    {
+            //        Debug.WriteLine(item.Name);
+            //    }
+
+            //}
+            foreach (var project in projects)
+            {
+                List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
+                
+                    List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(project.Id);
+                project.CountofTasks = items.Count;
+                project.CountofComplete = tasks.Count;
+                
+            }
+            
             lvwProjects.ItemsSource = projects;
         }
 

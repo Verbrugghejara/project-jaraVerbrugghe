@@ -11,7 +11,17 @@ namespace DP_project.Models
         public uint Id { get; set; }
         [JsonProperty(propertyName: "name")]
         public string Name { get; set; }
-        [JsonProperty(propertyName: "favorite")]
-        public Boolean Favorite { get; set; }
+        public int CountofTasks { get; set; }
+        public int CountofComplete { get; set; }
+        public int CountofIncomplete
+        {
+            get
+            {
+                if (CountofTasks == 0)
+                {
+                    CountofTasks = 1;
+                }
+                return CountofTasks - CountofComplete; }
+        }
     }
 }
