@@ -43,10 +43,11 @@ namespace DP_project.Views
             //uint i = Convert.ToUInt32(n);
             
             List<Project> project = await ToDoRepository.GetProjectByIdAsync(MyProject.Id);
-            List<Item> items = await ToDoRepository.GetTasksCompletedByProjectIdAsync(MyProject.Id);
             List<Item> tasks = await ToDoRepository.GetTasksByProjectIdAsync(MyProject.Id);
-            lvwSections.ItemsSource = tasks;
-            lvwSections.ItemsSource = items;
+            List<Item> Ctasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(MyProject.Id);
+            lvwSections.ItemsSource = Ctasks.Concat(tasks);
+            var list = Ctasks.Concat(tasks).ToString();
+            Debug.WriteLine(list);
             lvwProjectName.ItemsSource = project;
         }
 

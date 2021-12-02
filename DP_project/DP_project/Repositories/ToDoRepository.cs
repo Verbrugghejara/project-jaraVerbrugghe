@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,33 +52,33 @@ namespace DP_project.Repositories
         //}
 
         //------------------------------------------------ TASKS -------------------------------------------------
-        public static async Task<List<Item>> GetAllTasksAsync()
+        //public static async Task<List<Item>> GetAllTasksAsync()
 
-        {
-            using (HttpClient client = GetClient())
-            {
-                try
-                {
-                    string url = AddTopic("tasks");
-                    string json = await client.GetStringAsync(url);
-                    if (json != null)
-                    {
-                        //var o = JObject.Parse(json);
-                        Debug.WriteLine("klaar");
-                        var jsonString = JsonConvert.DeserializeObject<List<Item>>(json);
-                       
+        //{
+        //    using (HttpClient client = GetClient())
+        //    {
+        //        try
+        //        {
+        //            string url = AddTopic("tasks");
+        //            string json = await client.GetStringAsync(url);
+        //            if (json != null)
+        //            {
+        //                //var o = JObject.Parse(json);
+        //                Debug.WriteLine("klaar");
+        //                var jsonString = JsonConvert.DeserializeObject<List<Item>>(json);
 
 
-                    }
-                    return null;
-                }
-                catch (Exception ex)
-                {
 
-                    throw ex;
-                }
-            }
-        }
+        //            }
+        //            return null;
+        //        }
+        //        catch (Exception ex)
+        //        {
+
+        //            throw ex;
+        //        }
+        //    }
+        //}
 
         public static async Task<List<Item>> GetTasksByProjectIdAsync(uint id)
 
@@ -117,22 +118,15 @@ namespace DP_project.Repositories
         {
             using (HttpClient client = GetClient())
             {
-                try
+                string url = AddTopic2("tasks", id);
+                string json = await client.GetStringAsync(url);
+                if (json != null)
                 {
-                    string url = AddTopic2("tasks", id);
-                    string json = await client.GetStringAsync(url);
-                    if (json != null)
-                    {
-                        //var o = JObject.Parse(json);
-                        return JsonConvert.DeserializeObject<List<Item>>("[" + json + "]");
-                    }
-                    return null;
+                    //var o = JObject.Parse(json);
+                    return JsonConvert.DeserializeObject<List<Item>>("[" + json + "]");
                 }
-                catch (Exception ex)
-                {
+                return null;
 
-                    throw ex;
-                }
             }
         }
         public static async Task UpdateTask(Item toDoTask)
@@ -265,11 +259,7 @@ namespace DP_project.Repositories
                                     lists.Add(item);
                                 }
                             }
-
-
                         }
-
-
                     }
                     return lists;
                 }
@@ -278,6 +268,45 @@ namespace DP_project.Repositories
 
                     throw ex;
                 }
+            }
+        }
+        public static async Task<List<Item>> GetAllTasksAsync(uint project_id)
+
+        {
+            using (HttpClient client = GetClient())
+            {
+                List<String> ids = new List<String>();
+                List<Item> newList = new List<Item>();
+                List<Item> cList = await GetTasksCompletedByProjectIdAsync(project_id);
+                List<Item> List = await GetTasksByProjectIdAsync(project_id);
+                var list = cList.Concat(List);
+
+                foreach (var itemt in list)
+                {
+                    Debug.WriteLine(itemt.Id);
+                    Debug.WriteLine(itemt.TaskId);
+                    Debug.WriteLine(itemt.Name);
+                    if (itemt.TaskId == null)
+                    {
+                        //List<Item> tasks1 = await GetTasksByIDAsync(itemt.TaskId);
+                        ids.Add(itemt.Id);
+                    }
+                    else
+                    {
+                        ids.Add(itemt.TaskId);
+                    }
+
+                }
+                foreach (var item in ids)
+                {
+                    List<Item> tasks = await GetTasksByIDAsync(item);
+                    foreach (var o in tasks)
+                    {
+                        newList.Add(o);
+                    }
+                }
+                    
+                return newList;
             }
         }
 

@@ -24,7 +24,7 @@
                             <ColumnDefinition Width="45" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                            <CheckBox Color="Black" Grid.Column="0" x:Name="Checkbox" IsChecked="{Binding Completed}" CheckedChanged="Checkbox_CheckedChanged"/>
+                            <CheckBox Color="Black" Grid.Column="0" x:Name="Checkbox"  CheckedChanged="Checkbox_CheckedChanged"/>
                             <Label Grid.Column="1" Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" />
                     </Grid>
                 </ViewCell>

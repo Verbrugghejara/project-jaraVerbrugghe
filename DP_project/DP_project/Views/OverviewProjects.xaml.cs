@@ -44,26 +44,27 @@ namespace DP_project.Views
             
             //await ToDoRepository.TaskCloseAsync("5369881243");
             //5335833201
-            List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(2278576258);
+            List<Item> tasks = await ToDoRepository.GetAllTasksAsync(2278576258);
             foreach (var itemt in tasks)
             {
                 Debug.WriteLine(itemt.Id);
                 Debug.WriteLine(itemt.Name);
                 Debug.WriteLine("project id");
                 Debug.WriteLine(itemt.ProjectId);
+                Debug.WriteLine(itemt.Completed);
             }
             //////var taskid = tasks[0].Id;
             //////await ToDoListRepository.DeleteTask(taskid);
             //////List<ToDoTask> tasks1 = await ToDoListRepository.GetTasksAsync();
 
-            List<Item> taskss = await ToDoRepository.GetTasksByProjectIdAsync(2278576258);
-            foreach (var itemt in taskss)
-            {
-                Debug.WriteLine(itemt.Id);
-                Debug.WriteLine(itemt.Name);
-                Debug.WriteLine("project id");
-                Debug.WriteLine(itemt.ProjectId);
-            }
+            //List<Item> taskss = await ToDoRepository.GetTasksByProjectIdAsync(2278576258);
+            //foreach (var itemt in taskss)
+            //{
+            //    Debug.WriteLine(itemt.Id);
+            //    Debug.WriteLine(itemt.Name);
+            //    Debug.WriteLine("project id");
+            //    Debug.WriteLine(itemt.ProjectId);
+            //}
             Debug.WriteLine("Test tasks--------------------------");
             //Debug.WriteLine($"De aantal tasks zijn {tasks.Count()}");
             //foreach (var itemt in tasks)
@@ -162,12 +163,12 @@ namespace DP_project.Views
             lvwProjects.ItemsSource = projects;
         }
 
-        private void lvwProjects_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void lvwProjects_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (lvwProjects.SelectedItem != null)
             {
                 Project project = (Project)lvwProjects.SelectedItem;
-                Navigation.PushAsync(new SingleProjectPage(project));
+                await Navigation.PushAsync(new SingleProjectPage(project));
                 lvwProjects.SelectedItem = null;
 
             }
