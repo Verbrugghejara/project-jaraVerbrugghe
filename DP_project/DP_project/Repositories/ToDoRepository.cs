@@ -245,14 +245,15 @@ namespace DP_project.Repositories
             {
                 try
                 {
-                    List<Note> lists = new List<Note>();
+                    List<CompletedNotes> lists = new List<CompletedNotes>();
                     string url = "https://api.todoist.com/sync/v8/completed/get_all";
                     string json = await client.GetStringAsync(url);
+                    
                     if (json != null)
                     {
                         //var o = JObject.Parse(json);
                         Debug.WriteLine("klaar");
-                        var jsonString = JsonConvert.DeserializeObject<List<String>>("[" + json + "]");
+                        var jsonString = JsonConvert.DeserializeObject<List<CompletedNotes>>("[" + json + "]");
                         var item = jsonString;
                         Debug.WriteLine(item.ToString());
                         //foreach (var itemt in jsonString)
