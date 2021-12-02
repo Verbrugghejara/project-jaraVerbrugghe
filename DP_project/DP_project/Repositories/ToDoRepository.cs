@@ -238,39 +238,40 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task<List<Note>> GetTasksCompletedByProjectIdAsync(uint project_id)
+        public static async Task<List<Item>> GetTasksCompletedByProjectIdAsync(uint project_id)
 
         {
             using (HttpClient client = GetClient())
             {
                 try
                 {
-                    List<CompletedNotes> lists = new List<CompletedNotes>();
+                    List<Item> lists = new List<Item>();
                     string url = "https://api.todoist.com/sync/v8/completed/get_all";
                     string json = await client.GetStringAsync(url);
-                    
+                    string newJson = "[" + json + "]";
+
+
                     if (json != null)
                     {
                         //var o = JObject.Parse(json);
                         Debug.WriteLine("klaar");
-                        var jsonString = JsonConvert.DeserializeObject<List<CompletedNotes>>("[" + json + "]");
-                        var item = jsonString;
-                        Debug.WriteLine(item.ToString());
-                        //foreach (var itemt in jsonString)
-                        //{
-                        //    foreach (var o in itemt)
-                        //    {
+                        var jsonString = JsonConvert.DeserializeObject<List<CompletedNotes>>(newJson);
+                        foreach (var itemt in jsonString)
+                        {
+                            foreach (var item in itemt.items)
+                            {
+                                if (item.project_id == project_id)
+                                {
+                                    lists.Add(item);
+                                }
+                            }
 
-                        //        if (o.ProjectId == project_id)
-                        //        {
-                        //            lists.Add(o);
-                        //        }
-                        //    }
-                        //}
+
+                        }
 
 
                     }
-                    return null;
+                    return lists;
                 }
                 catch (Exception ex)
                 {

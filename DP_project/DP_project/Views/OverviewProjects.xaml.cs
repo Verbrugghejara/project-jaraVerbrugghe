@@ -45,14 +45,13 @@ namespace DP_project.Views
             
             //await ToDoRepository.TaskCloseAsync("5369881243");
             //5335833201
-            List<Note> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(2278576258);
+            List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(2278576258);
             foreach (var itemt in tasks)
             {
-                Debug.WriteLine(itemt.Id);
-                Debug.WriteLine(itemt.Name);
+                Debug.WriteLine(itemt.id);
+                Debug.WriteLine(itemt.content);
                 Debug.WriteLine("project id");
-                Debug.WriteLine(itemt.ProjectId);
-                Debug.WriteLine(itemt.Completed);
+                Debug.WriteLine(itemt.project_id);
             }
             //////var taskid = tasks[0].Id;
             //////await ToDoListRepository.DeleteTask(taskid);
