@@ -43,11 +43,8 @@ namespace DP_project.Views
             //uint i = Convert.ToUInt32(n);
             
             List<Project> project = await ToDoRepository.GetProjectByIdAsync(MyProject.Id);
-            List<Item> tasks = await ToDoRepository.GetTasksByProjectIdAsync(MyProject.Id);
-            List<Item> Ctasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(MyProject.Id);
-            lvwSections.ItemsSource = Ctasks.Concat(tasks);
-            var list = Ctasks.Concat(tasks).ToString();
-            Debug.WriteLine(list);
+            List<Item> tasks = await ToDoRepository.GetAllTasksAsync(MyProject.Id);
+            lvwSections.ItemsSource = tasks;
             lvwProjectName.ItemsSource = project;
         }
 
@@ -71,7 +68,11 @@ namespace DP_project.Views
                 await ToDoRepository.TaskCloseAsync(id);
                 Debug.WriteLine("true");
             }
-            Debug.WriteLine("false");
+            else
+            {
+                await ToDoRepository.TaskReopenAsync(id);
+                Debug.WriteLine("false");
+            }
         }
     }
 }
