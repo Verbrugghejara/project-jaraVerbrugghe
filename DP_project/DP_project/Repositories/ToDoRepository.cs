@@ -16,9 +16,9 @@ namespace DP_project.Repositories
         private const string _URL = "https://api.todoist.com/rest/v1/";
 
 
-       
 
-        
+
+
         private static HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
@@ -45,14 +45,41 @@ namespace DP_project.Repositories
         {
             return $"{_URL}{topic}/{id}";
         }
-        private static string AddTopicWithId(string topic, string id)
-        {
-            return $"{_URL}{topic}?project_id={id}";
-        }
+        //private static string AddTopicWithId(string topic, string id)
+        //{
+        //    return $"{_URL}{topic}?project_id={id}";
+        //}
 
         //------------------------------------------------ TASKS -------------------------------------------------
+        public static async Task<List<Note>> GetAllTasksAsync()
 
-        public static async Task<List<Note>> GetTasksAsync(uint id)
+        {
+            using (HttpClient client = GetClient())
+            {
+                try
+                {
+                    string url = AddTopic("tasks");
+                    string json = await client.GetStringAsync(url);
+                    if (json != null)
+                    {
+                        //var o = JObject.Parse(json);
+                        Debug.WriteLine("klaar");
+                        var jsonString = JsonConvert.DeserializeObject<List<Note>>(json);
+                       
+
+
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        }
+
+        public static async Task<List<Note>> GetTasksByProjectIdAsync(uint id)
 
         {
             List<Note> lists = new List<Note>();
@@ -174,6 +201,128 @@ namespace DP_project.Repositories
                     if (!response.IsSuccessStatusCode)
                     {
                         throw new Exception("Something went wrong with the update of ToDoList");
+                    }
+                    Debug.WriteLine("gelukt");
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        }
+        public static async Task<List<Note>> GetTasksCompletedAsync()
+
+        {
+            using (HttpClient client = GetClient())
+            {
+                try
+                {
+                    string url = "https://api.todoist.com/sync/v8/completed/get_all";
+                    string json = await client.GetStringAsync(url);
+                    if (json != null)
+                    {
+                        //var o = JObject.Parse(json);
+                        Debug.WriteLine("klaar");
+                        var jsonString = JsonConvert.DeserializeObject<List<Note>>(json);
+
+
+
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        }
+        public static async Task<List<Note>> GetTasksCompletedByProjectIdAsync(uint project_id)
+
+        {
+            using (HttpClient client = GetClient())
+            {
+                try
+                {
+                    List<Note> lists = new List<Note>();
+                    string url = "https://api.todoist.com/sync/v8/completed/get_all";
+                    string json = await client.GetStringAsync(url);
+                    if (json != null)
+                    {
+                        //var o = JObject.Parse(json);
+                        Debug.WriteLine("klaar");
+                        var jsonString = JsonConvert.DeserializeObject<List<String>>("[" + json + "]");
+                        var item = jsonString;
+                        Debug.WriteLine(item.ToString());
+                        //foreach (var itemt in jsonString)
+                        //{
+                        //    foreach (var o in itemt)
+                        //    {
+
+                        //        if (o.ProjectId == project_id)
+                        //        {
+                        //            lists.Add(o);
+                        //        }
+                        //    }
+                        //}
+
+
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        }
+
+        public static async Task TaskCloseAsync(string id)
+        {
+            using (HttpClient client = GetClient())
+            {
+                try
+                {
+                    string url = AddTopic2("tasks", id);
+
+
+                    string json = JsonConvert.SerializeObject(id); //serialize is om van variabele naar een string te gaan
+                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync(url + "/close", null);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var result = response.StatusCode.ToString();
+                        Debug.WriteLine(result);
+                    }
+                    Debug.WriteLine("gelukt");
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        }
+        public static async Task TaskReopenAsync(string id)
+        {
+            using (HttpClient client = GetClient())
+            {
+                try
+                {
+                    string url = AddTopic2("tasks", id);
+
+
+                    string json = JsonConvert.SerializeObject(id); //serialize is om van variabele naar een string te gaan
+                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync(url + "/reopen", null);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var result = response.StatusCode.ToString();
+                        Debug.WriteLine(result);
                     }
                     Debug.WriteLine("gelukt");
                 }

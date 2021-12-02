@@ -2,6 +2,7 @@
 using DP_project.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace DP_project.Views
             //uint n = MyProject.Id;
             //uint i = Convert.ToUInt32(n);
             List<Project> project = await ToDoRepository.GetProjectByIdAsync(MyProject.Id);
-            List<Note> tasks = await ToDoRepository.GetTasksAsync(MyProject.Id);
+            List<Note> tasks = await ToDoRepository.GetTasksByProjectIdAsync(MyProject.Id);
             lvwSections.ItemsSource = tasks;
             lvwProjectName.ItemsSource = project;
         }
@@ -55,5 +56,18 @@ namespace DP_project.Views
             }
         }
 
+        private async void Checkbox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            var cb = (CheckBox)sender;
+            var item = (Note)cb.BindingContext;
+            var id = item.Id;
+            if (cb.IsChecked == true)
+            {
+                
+                await ToDoRepository.TaskCloseAsync(id);
+                Debug.WriteLine("true");
+            }
+            Debug.WriteLine("false");
+        }
     }
 }

@@ -42,23 +42,34 @@ namespace DP_project.Views
         }
         private async void TestRepositories()
         {
+            
+            //await ToDoRepository.TaskCloseAsync("5369881243");
             //5335833201
-            List<Note> tasks = await ToDoRepository.GetTasksAsync(2278576258);
-            ////var taskid = tasks[0].Id;
-            ////await ToDoListRepository.DeleteTask(taskid);
-            ////List<ToDoTask> tasks1 = await ToDoListRepository.GetTasksAsync();
-
-            Debug.WriteLine("Test tasks--------------------------");
-            Debug.WriteLine($"De aantal tasks zijn {tasks.Count()}");
+            List<Note> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(2278576258);
             foreach (var itemt in tasks)
             {
                 Debug.WriteLine(itemt.Id);
                 Debug.WriteLine(itemt.Name);
                 Debug.WriteLine("project id");
                 Debug.WriteLine(itemt.ProjectId);
+                Debug.WriteLine(itemt.Completed);
             }
+            //////var taskid = tasks[0].Id;
+            //////await ToDoListRepository.DeleteTask(taskid);
+            //////List<ToDoTask> tasks1 = await ToDoListRepository.GetTasksAsync();
 
-            List<Project> projects = await ToDoRepository.GetProjectsAsync();
+            Debug.WriteLine("Test tasks--------------------------");
+            //Debug.WriteLine($"De aantal tasks zijn {tasks.Count()}");
+            //foreach (var itemt in tasks)
+            //{
+            //    Debug.WriteLine(itemt.Id);
+            //    Debug.WriteLine(itemt.Name);
+            //    Debug.WriteLine("project id");
+            //    Debug.WriteLine(itemt.ProjectId);
+            //    Debug.WriteLine(itemt.Completed);
+            //}
+
+            //List<Project> projects = await ToDoRepository.GetProjectsAsync();
 
             //Project project1 = projects[2];
             //project1.Id = GenerateNumber().ToString();

@@ -16,5 +16,5 @@ C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\View
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\Views\SingleProjectPage.xaml.g.cs
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\Views\DetailsTaskPage.xaml.g.cs
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\Views\CreateTask.xaml.g.cs
-C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.csproj.AssemblyReference.cache
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\Views\CreateProject.xaml.g.cs
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project\obj\Debug\netstandard2.0\DP_project.csproj.AssemblyReference.cache

@@ -13,5 +13,7 @@ namespace DP_project.Models
         public string Name { get; set; }
         [JsonProperty(propertyName: "project_id")]
         public uint ProjectId { get; set; }
+        [JsonProperty(propertyName: "completed")]
+        public bool Completed { get; set; }
     }
 }
