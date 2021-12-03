@@ -8,7 +8,7 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <StackLayout BackgroundColor="#DDEFF6">
-        <StackLayout  Padding="16,16,16,16">
+        <StackLayout  Padding="16,0,16,16">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
@@ -18,23 +18,23 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Label Padding="0,8,0,0" HorizontalOptions="Center" Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
+                                <Label Padding="0,8,0,0" HorizontalOptions="Center" Text="{Binding Name}" FontSize="Large"  TextColor="Black"></Label>
 
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Name" FontAttributes="Bold" Padding="36, 0 ,0 ,0"/>
+                <Label VerticalOptions="Center" FontSize="16" TextColor="#005D80" Grid.Row="1" Grid.Column="0" Text="Name" FontAttributes="Bold" Padding="36, 0 ,0 ,0"/>
                 <Entry x:Name="entContent" Grid.Row="1" Grid.Column="1"  Placeholder="Name task" TextColor="Black" VerticalOptions="Center" />
 
 
             </Grid>
         </StackLayout>
 
-        <StackLayout>
+        <StackLayout Padding="16,0,16,0">
 
-            <Button  x:Name="btnSave"  Text="Save"/>
-            <Button  x:Name="btnDelete"  Text="Delete task" BackgroundColor="Red"/>
+            <Button  x:Name="btnSave" FontSize="20" FontAttributes="Bold" TextColor="#DDEFF6" BackgroundColor="#005D80" Text="Save"/>
+            <Button  x:Name="btnDelete" FontSize="20" Text="Delete task" FontAttributes="Bold" TextColor="#DDEFF6" BackgroundColor="Red"/>
         </StackLayout>
 
 

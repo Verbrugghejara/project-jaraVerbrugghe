@@ -4,19 +4,19 @@
              x:Class="DP_project.Views.OverviewProjects" 
              NavigationPage.HasNavigationBar="False" >
     <StackLayout BackgroundColor="#DDEFF6">
-        <Frame Padding="16,16,16,16" HeightRequest="55" BackgroundColor="#01B3F6"  >
+        <StackLayout Padding="16,8,16,16"  BackgroundColor="#01B3F6"  >
 
             <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                     <ColumnDefinition />
 
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.ColumnSpan="2" VerticalOptions="Center" FontAttributes="Bold" Text="To Do List" TextColor="#005D80" FontSize="28" HorizontalOptions="Center"/>
+                <Label Grid.ColumnSpan="2" HeightRequest="46" VerticalOptions="Center" FontAttributes="Bold" Text="To Do List" TextColor="#005D80" FontSize="28" HorizontalOptions="Center"/>
                 <ImageButton x:Name="btnGraph" WidthRequest="30" BackgroundColor="#01B3F6"  Grid.Column="1" Source="icon2.png" HorizontalOptions="End" />
             </Grid>
-        </Frame>
+        </StackLayout>
         <StackLayout HeightRequest="30"  Padding="16,0,16,-8">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -68,6 +68,7 @@
                     FontSize="40"
                     FontAttributes="Bold"
                     TextColor="#DDEFF6"
+                    Padding="0,0,0,4"
                     Text="+"/>
         </StackLayout >
     </StackLayout>

@@ -6,14 +6,14 @@
 
 
     <StackLayout  BackgroundColor="#DDEFF6">
-        <Frame Padding="16,16,16,16" HeightRequest="55" BackgroundColor="#01B3F6">
+        <Frame Padding="16,8,16,16" HeightRequest="55" BackgroundColor="#01B3F6">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ImageButton  Grid.Column="0" x:Name="btnBack" WidthRequest="18" BackgroundColor="#01B3F6"  Source="arrowleft.png" VerticalOptions="Center" HorizontalOptions="Start" Margin="18,5,0,1"/>
-                <Label Text="{Binding MyStringProperty}" FontAttributes="Bold" FontSize="28" Grid.ColumnSpan="2" TextColor="#005D80" HorizontalOptions="Center"/> 
+                <Label Text="{Binding MyStringProperty}" FontAttributes="Bold" FontSize="28" Grid.ColumnSpan="2" TextColor="#005D80" HorizontalOptions="Center" VerticalOptions="Center"/> 
 
             </Grid>
         </Frame>
@@ -43,13 +43,14 @@
                     WidthRequest="80"
                     HeightRequest="80"
                     CornerRadius="100"
-                    BorderWidth="2"
                     BackgroundColor="#005D80"
                     HorizontalOptions="End"
                     FontSize="40"
                     FontAttributes="Bold"
                     TextColor="#DDEFF6"
-                    Text="+"/>
+                    Text="+"
+                    Padding="0,0,0,4"
+                />
     </StackLayout >
     </StackLayout>
 </ContentPage>

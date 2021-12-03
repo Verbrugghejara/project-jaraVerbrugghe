@@ -68,6 +68,7 @@ namespace DP_project.Views
                 MaxValue = 100,
                 ValueLabelOrientation = Orientation.Horizontal,
                 LabelOrientation = Orientation.Vertical,
+                BackgroundColor = SKColor.Parse("#DDEFF6")
             };
             this.chartViewBar.Chart = chart;
         }

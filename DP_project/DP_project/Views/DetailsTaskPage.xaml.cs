@@ -31,6 +31,7 @@ namespace DP_project.Views
         {
             List<Item> tasks = await ToDoRepository.GetTasksByIDAsync(MyNote.Id);
             lvwTaskName.ItemsSource = tasks;
+            lvwTaskName.SelectedItem = null;
         }
 
         private async void BtnDelete_Clicked(object sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace DP_project.Views
 
                 await ToDoRepository.DeleteTask(MyNote.Id);
                 await Navigation.PushAsync(new SingleProjectPage(MyProject));
+            
         }
 
         private async void BtnSave_Clicked(object sender, EventArgs e)

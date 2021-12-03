@@ -4,10 +4,10 @@
              x:Class="DP_project.Views.GraphPage">
     <NavigationPage.TitleView>
         <StackLayout>
-        <Label Text="Charts" FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+            <Label Text="Charts" FontSize="28" FontAttributes="Bold" TextColor="#005D80" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
         </StackLayout>
     </NavigationPage.TitleView>
-    <StackLayout Margin="0,10,0,0">
-        <microcharts:ChartView x:Name="chartViewBar" HeightRequest="400"/>
+    <StackLayout BackgroundColor="#DDEFF6" Padding="16,10,16,0">
+        <microcharts:ChartView BackgroundColor="#DDEFF6" x:Name="chartViewBar" HeightRequest="400"/>
     </StackLayout>
 </ContentPage>

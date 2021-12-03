@@ -20,7 +20,7 @@
 
             </Grid>
         </StackLayout>
-        <StackLayout>
+        <StackLayout Padding="16,0,16,0">
             <Button  x:Name="btnCreate" FontSize="20" FontAttributes="Bold" TextColor="#DDEFF6" BackgroundColor="#005D80" Text="Save"/>
         </StackLayout>
     </StackLayout>
