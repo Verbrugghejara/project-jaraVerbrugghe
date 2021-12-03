@@ -4,22 +4,24 @@
              x:Class="DP_project.Views.CreateTask">
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Create task" FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+            <Label Text="Create task" FontSize="28" FontAttributes="Bold" TextColor="#005D80" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
         </StackLayout>
     </NavigationPage.TitleView>
-    <StackLayout>
-        <StackLayout>
+    <StackLayout  BackgroundColor="#DDEFF6">
+        <StackLayout Padding="16,16,16,16">
             <Grid>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
                     <ColumnDefinition  />
                 </Grid.ColumnDefinitions>
-                <Label VerticalOptions="Center" Grid.Column="0" Text="Name" FontAttributes="Bold" Padding="36, 0 ,0 ,0"/>
+                <Label VerticalOptions="Center" FontSize="16" TextColor="#005D80" Grid.Column="0" Text="Name" FontAttributes="Bold" Padding="26, 0 ,0 ,0"/>
                 <Entry x:Name="entContent" Grid.Column="1"  Placeholder="Name task" TextColor="Black" VerticalOptions="Center" />
 
             </Grid>
         </StackLayout>
-        <Button  x:Name="btnCreate" Grid.Column="2" Text="Save"/>
+        <StackLayout>
+            <Button  x:Name="btnCreate" FontSize="20" FontAttributes="Bold" TextColor="#DDEFF6" BackgroundColor="#005D80" Text="Save"/>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

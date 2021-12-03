@@ -24,7 +24,7 @@
             </StackLayout>
 
         <StackLayout VerticalOptions="End" Padding="16,0,16,0">
-            <Button  x:Name="btnCreate" BackgroundColor="#005D80" Grid.Column="2" Text="Save" FontSize="20" FontAttributes="Bold" TextColor="#DDEFF6"/>
+            <Button  x:Name="btnCreate" BackgroundColor="#005D80" Text="Save" FontSize="20" FontAttributes="Bold" TextColor="#DDEFF6"/>
         </StackLayout>
 
     </StackLayout>

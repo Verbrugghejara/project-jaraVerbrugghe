@@ -4,11 +4,11 @@
              x:Class="DP_project.Views.DetailsTaskPage">
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Edit" FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+            <Label Text="Edit" FontSize="28" FontAttributes="Bold" TextColor="#005D80" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
         </StackLayout>
     </NavigationPage.TitleView>
-    <StackLayout>
-        <StackLayout>
+    <StackLayout BackgroundColor="#DDEFF6">
+        <StackLayout  Padding="16,16,16,16">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />

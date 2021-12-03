@@ -4,7 +4,7 @@
              x:Class="DP_project.Views.OverviewProjects" 
              NavigationPage.HasNavigationBar="False" >
     <StackLayout BackgroundColor="#DDEFF6">
-        <Frame Padding="16,16,16,16" HeightRequest="46" BackgroundColor="#01B3F6"  >
+        <Frame Padding="16,16,16,16" HeightRequest="55" BackgroundColor="#01B3F6"  >
 
             <Grid >
                 <Grid.ColumnDefinitions>

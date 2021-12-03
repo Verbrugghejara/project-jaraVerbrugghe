@@ -5,21 +5,21 @@
              NavigationPage.HasNavigationBar="False">
 
 
-    <StackLayout>
-        <StackLayout Padding="0,8,0,0" HeightRequest="48">
+    <StackLayout  BackgroundColor="#DDEFF6">
+        <Frame Padding="16,16,16,16" HeightRequest="55" BackgroundColor="#01B3F6">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ImageButton  Grid.Column="0" x:Name="btnBack" WidthRequest="18" BackgroundColor="White"  Source="arrowleft.png" VerticalOptions="Center" HorizontalOptions="Start" Margin="18,5,0,1"/>
-                <Label Text="{Binding MyStringProperty}" FontSize="30" Grid.ColumnSpan="2" TextColor="Black" HorizontalOptions="Center"/> 
+                <ImageButton  Grid.Column="0" x:Name="btnBack" WidthRequest="18" BackgroundColor="#01B3F6"  Source="arrowleft.png" VerticalOptions="Center" HorizontalOptions="Start" Margin="18,5,0,1"/>
+                <Label Text="{Binding MyStringProperty}" FontAttributes="Bold" FontSize="28" Grid.ColumnSpan="2" TextColor="#005D80" HorizontalOptions="Center"/> 
 
             </Grid>
-        </StackLayout>
+        </Frame>
 
-
-        <ListView x:Name="lvwSections" SeparatorColor="White" ItemSelected="lvwSections_ItemSelected"  >
+        <StackLayout>
+            <ListView x:Name="lvwSections" SeparatorColor="#DDEFF6" ItemSelected="lvwSections_ItemSelected"  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -29,7 +29,7 @@
                                 <ColumnDefinition Width="45" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <CheckBox Color="Black" Grid.Column="0" x:Name="Checkbox"  CheckedChanged="Checkbox_CheckedChanged" IsChecked="{Binding Completed}"/>
+                            <CheckBox Color="#005D80" Grid.Column="0" x:Name="Checkbox"  CheckedChanged="Checkbox_CheckedChanged" IsChecked="{Binding Completed}"/>
                             <Label Grid.Column="1" Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" FontSize="Medium" />
                         </Grid>
                     </ViewCell>
@@ -37,6 +37,19 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button x:Name="btnCreate" FontAttributes="None" FontSize="30" Text="Create Task"/>
+    </StackLayout>
+    <StackLayout Padding="0,0,16,16" >
+        <Button x:Name="btnCreate"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    CornerRadius="100"
+                    BorderWidth="2"
+                    BackgroundColor="#005D80"
+                    HorizontalOptions="End"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    TextColor="#DDEFF6"
+                    Text="+"/>
+    </StackLayout >
     </StackLayout>
 </ContentPage>
