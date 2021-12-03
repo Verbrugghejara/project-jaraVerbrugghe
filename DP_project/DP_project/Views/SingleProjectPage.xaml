@@ -3,25 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DP_project.Views.SingleProjectPage"
              NavigationPage.HasNavigationBar="False">
+    
+        <NavigationPage.TitleView>
+            <StackLayout>
+                <Label Text="{Binding MyStringProperty}" FontSize="30" TextColor="White" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+            </StackLayout>
+        </NavigationPage.TitleView>
     <StackLayout >
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <ListView Grid.Row="0" HeightRequest="50" x:Name="lvwProjectName">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-
-                            <Label Padding="0,8,0,0"  HorizontalOptions="Center" Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
-
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-
         <ListView x:Name="lvwSections" SeparatorColor="White" ItemSelected="lvwSections_ItemSelected"  >
         <ListView.ItemTemplate>
             <DataTemplate>

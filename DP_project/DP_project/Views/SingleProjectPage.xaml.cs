@@ -15,7 +15,16 @@ namespace DP_project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SingleProjectPage : ContentPage
     {
-        
+        private string myStringProperty;
+        public string MyStringProperty
+        {
+            get { return myStringProperty; }
+            set
+            {
+                myStringProperty = value;
+                OnPropertyChanged(nameof(MyStringProperty));
+            }
+        }
         public Project MyProject { get; set; }
         public Note MyNote { get; set; }
         public  SingleProjectPage(Project project)
@@ -30,12 +39,10 @@ namespace DP_project.Views
 
         private async void btnCreate_Clicked(object sender, EventArgs e)
         {
-            //uint n = MyProject.Id;
-            //uint i = Convert.ToUInt32(n);
             Item task = new Item();
             await Navigation.PushAsync(new CreateTask(task, MyProject));
             lvwSections.SelectedItem = null;
-           
+
         }
 
         private async void ShowSingleProject()
@@ -46,7 +53,13 @@ namespace DP_project.Views
             List<Project> project = await ToDoRepository.GetProjectByIdAsync(MyProject.Id);
             List<Item> tasks = await ToDoRepository.GetAllTasksAsync(MyProject.Id);
             lvwSections.ItemsSource = tasks;
-            lvwProjectName.ItemsSource = project;
+            //lvwProjectName.ItemsSource = project;
+            BindingContext = this;
+            foreach (var item in project)
+            {
+
+                MyStringProperty = item.Name;
+            }
         }
 
         private void lvwSections_ItemSelected(object sender, SelectedItemChangedEventArgs e)
