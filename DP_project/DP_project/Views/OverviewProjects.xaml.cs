@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DP_project.Models;
 using DP_project.Repositories;
+using Microcharts;
+using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,12 +16,21 @@ namespace DP_project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OverviewProjects : ContentPage
     {
+
+      
         public OverviewProjects()
         {
             InitializeComponent();
             ShowProjects();
             TestRepositories();
             btnCreate.Clicked += btnCreate_Clicked;
+            btnGraph.Clicked += btnGraph_Clicked;
+        }
+
+        private async void btnGraph_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new GraphPage());
+
         }
 
         private async void btnCreate_Clicked(object sender, EventArgs e)
@@ -188,7 +199,7 @@ namespace DP_project.Views
                 List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
                 
                     List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(project.Id);
-                project.CountofTasks = items.Count;
+                project.CountofTasks = items.Count+tasks.Count;
                 project.CountofComplete = tasks.Count;
                 
             }

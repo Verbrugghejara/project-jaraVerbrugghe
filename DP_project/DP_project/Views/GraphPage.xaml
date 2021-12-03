@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="DP_project.Views.GraphPage">
+    <NavigationPage.TitleView>
+        <StackLayout>
+        <Label Text="Charts" FontSize="30" TextColor="White" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <microcharts:ChartView x:Name="chartViewBar" HeightRequest="400"/>
+    </StackLayout>
+</ContentPage>
