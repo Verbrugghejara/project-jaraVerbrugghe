@@ -4,10 +4,10 @@
              x:Class="DP_project.Views.CreateProject">
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Create project" FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+            <Label Text="Create project" FontSize="28" TextColor="#005D80" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
         </StackLayout>
     </NavigationPage.TitleView>
-    <StackLayout>
+    <StackLayout BackgroundColor="#DDEFF6">
         <StackLayout>
                 <Grid>
 

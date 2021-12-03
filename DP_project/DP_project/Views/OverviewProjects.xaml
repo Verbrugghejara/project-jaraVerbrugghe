@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="DP_project.Views.OverviewProjects" 
              NavigationPage.HasNavigationBar="False" >
-    <StackLayout BackgroundColor="#D1ECF6">
-        <Frame Padding="16,16,16,16" HeightRequest="35" BackgroundColor="#01B3F6"  >
+    <StackLayout BackgroundColor="#DDEFF6">
+        <Frame Padding="16,16,16,16" HeightRequest="46" BackgroundColor="#01B3F6"  >
 
             <Grid >
                 <Grid.ColumnDefinitions>
@@ -12,12 +12,12 @@
                     <ColumnDefinition />
 
                 </Grid.ColumnDefinitions>
-                
-                <Label Grid.ColumnSpan="2" VerticalOptions="Center" Text="To Do List" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+
+                <Label Grid.ColumnSpan="2" VerticalOptions="Center" FontAttributes="Bold" Text="To Do List" TextColor="#005D80" FontSize="28" HorizontalOptions="Center"/>
                 <ImageButton x:Name="btnGraph" WidthRequest="30" BackgroundColor="#01B3F6"  Grid.Column="1" Source="icon2.png" HorizontalOptions="End" />
             </Grid>
         </Frame>
-        <StackLayout HeightRequest="25"  Padding="16,0,16,-8">
+        <StackLayout HeightRequest="30"  Padding="16,0,16,-8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="45" />
@@ -57,16 +57,17 @@
             </ListView.ItemTemplate>
         </ListView>
         </StackLayout>
-        <StackLayout>
+        <StackLayout Padding="0,0,16,16" >
             <Button x:Name="btnCreate"
     WidthRequest="80"
     HeightRequest="80"
     CornerRadius="100"
     BorderWidth="2"
-    BorderColor="Gray"
+                    BackgroundColor="#005D80"
                 HorizontalOptions="End"
                 FontSize="40"
                 FontAttributes="Bold"
+                    TextColor="#DDEFF6"
     Text="+"/>
         </StackLayout >
         </StackLayout>

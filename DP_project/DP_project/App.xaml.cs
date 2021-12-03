@@ -19,7 +19,7 @@ namespace DP_project
             // MainPage = new MainPage();
             MainPage = new NavigationPage(new OverviewProjects())
             {
-                BarBackgroundColor = Color.FromHex("#FFFFFF"),
+                BarBackgroundColor = Color.FromHex("#01B3F6"),
                 BarTextColor = Color.Black
             };
         }
