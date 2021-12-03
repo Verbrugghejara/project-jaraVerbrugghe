@@ -28,6 +28,7 @@ foreground;obj\Debug\110\res\mipmap-anydpi-v26\icon.xml
 foreground;obj\Debug\110\res\mipmap-anydpi-v26\icon_round.xml
 FrameLayout;C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\lp\49\jl\res\layout\bottomtablayout.xml
 item;C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\lp\49\jl\res\values\styles.xml
+item;obj\Debug\110\res\values\styles.xml
 LinearLayout;C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\lp\49\jl\res\layout\bottomtablayout.xml
 paths;C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\lp\48\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\lp\1\jl\res\values\strings.xml

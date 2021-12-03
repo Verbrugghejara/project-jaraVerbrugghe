@@ -33,7 +33,7 @@
         </StackLayout>
 
         <StackLayout  Padding="16,0,16,16">
-        <ListView x:Name="lvwProjects" SeparatorColor="White" ItemSelected="lvwProjects_ItemSelected"  SeparatorVisibility="None" >
+        <ListView x:Name="lvwProjects" ItemSelected="lvwProjects_ItemSelected"   >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -59,16 +59,16 @@
         </StackLayout>
         <StackLayout Padding="0,0,16,16" >
             <Button x:Name="btnCreate"
-    WidthRequest="80"
-    HeightRequest="80"
-    CornerRadius="100"
-    BorderWidth="2"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    CornerRadius="100"
+                    BorderWidth="2"
                     BackgroundColor="#005D80"
-                HorizontalOptions="End"
-                FontSize="40"
-                FontAttributes="Bold"
+                    HorizontalOptions="End"
+                    FontSize="40"
+                    FontAttributes="Bold"
                     TextColor="#DDEFF6"
-    Text="+"/>
+                    Text="+"/>
         </StackLayout >
-        </StackLayout>
+    </StackLayout>
 </ContentPage>
