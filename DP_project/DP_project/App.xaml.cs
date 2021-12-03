@@ -16,8 +16,12 @@ namespace DP_project
         {
             InitializeComponent();
 
-           // MainPage = new MainPage();
-            MainPage = new NavigationPage(new OverviewProjects());
+            // MainPage = new MainPage();
+            MainPage = new NavigationPage(new OverviewProjects())
+            {
+                BarBackgroundColor = Color.FromHex("#FFFFFF"),
+                BarTextColor = Color.Black
+            };
         }
         protected override void OnStart()
         {

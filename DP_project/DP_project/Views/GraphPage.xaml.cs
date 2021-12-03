@@ -37,7 +37,6 @@ namespace DP_project.Views
                 int CountAllTasks = items.Count+tasks.Count;
                 if (CountCompletedTasks == 0)
                 {
-                    int percent = 0;
                     orderCounts.Add(new AreaOdersCount { Area = project.Name, OrderCount = 1 });
                 }
                 else

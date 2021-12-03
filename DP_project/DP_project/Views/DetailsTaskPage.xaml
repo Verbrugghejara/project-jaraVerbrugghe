@@ -2,43 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DP_project.Views.DetailsTaskPage">
-    <ContentPage.Content>
+    <NavigationPage.TitleView>
         <StackLayout>
-           
+            <Label Text="Edit" FontSize="30" TextColor="Black" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition  />
+                </Grid.ColumnDefinitions>
+                <ListView HeightRequest="50" HorizontalOptions="Center"  Grid.Row="0" Grid.ColumnSpan="2" x:Name="lvwTaskName">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Padding="0,8,0,0" HorizontalOptions="Center" Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
 
-            <StackLayout>
-                <Grid>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition  />
-                    </Grid.ColumnDefinitions>
-                    <ListView HeightRequest="50" HorizontalOptions="Center"  Grid.Row="0" Grid.ColumnSpan="2" x:Name="lvwTaskName">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label Padding="0,8,0,0" HorizontalOptions="Center" Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" TextColor="Black"></Label>
-
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Content" FontAttributes="Bold" Padding="16, 0 ,0 ,0"/>
-                    <Entry x:Name="entContent" Grid.Row="1" Grid.Column="1"  Placeholder="Edit task" TextColor="Black" VerticalOptions="Center" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Name" FontAttributes="Bold" Padding="36, 0 ,0 ,0"/>
+                <Entry x:Name="entContent" Grid.Row="1" Grid.Column="1"  Placeholder="Name task" TextColor="Black" VerticalOptions="Center" />
 
 
-                </Grid>
-            </StackLayout>
+            </Grid>
+        </StackLayout>
 
-
+        <StackLayout>
 
             <Button  x:Name="btnSave"  Text="Save"/>
             <Button  x:Name="btnDelete"  Text="Delete task" BackgroundColor="Red"/>
-
         </StackLayout>
-    </ContentPage.Content>
+
+
+    </StackLayout>
 </ContentPage>

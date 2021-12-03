@@ -33,9 +33,13 @@ namespace DP_project.Views
             MyProject = project;
             ShowSingleProject();
             btnCreate.Clicked += btnCreate_Clicked;
-            //btnBack.Clicked += btnBack_Clicked;
+            btnBack.Clicked += btnBack_Clicked;
         }
 
+        private async void btnBack_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OverviewProjects());
+        }
 
         private async void btnCreate_Clicked(object sender, EventArgs e)
         {
@@ -62,12 +66,12 @@ namespace DP_project.Views
             }
         }
 
-        private void lvwSections_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private  void lvwSections_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (lvwSections.SelectedItem != null)
             {
                 Item note = (Item)lvwSections.SelectedItem;
-                Navigation.PushAsync(new DetailsTaskPage(note, MyProject));
+                 Navigation.PushAsync(new DetailsTaskPage(note, MyProject));
             }
         }
 

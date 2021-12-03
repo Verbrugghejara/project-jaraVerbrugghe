@@ -3,31 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DP_project.Views.SingleProjectPage"
              NavigationPage.HasNavigationBar="False">
-    
-        <NavigationPage.TitleView>
-            <StackLayout>
-                <Label Text="{Binding MyStringProperty}" FontSize="30" TextColor="White" HorizontalTextAlignment="Center" Margin="0, 0, 75, 0"/>
-            </StackLayout>
-        </NavigationPage.TitleView>
-    <StackLayout >
-        <ListView x:Name="lvwSections" SeparatorColor="White" ItemSelected="lvwSections_ItemSelected"  >
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="45" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
+
+    <StackLayout>
+        <StackLayout Padding="0,8,0,0" HeightRequest="48">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ImageButton  Grid.Column="0" x:Name="btnBack" WidthRequest="18" BackgroundColor="White"  Source="arrowleft.png" VerticalOptions="Center" HorizontalOptions="Start" Margin="18,5,0,1"/>
+                <Label Text="{Binding MyStringProperty}" FontSize="30" Grid.ColumnSpan="2" TextColor="Black" HorizontalOptions="Center"/> 
+
+            </Grid>
+        </StackLayout>
+
+
+        <ListView x:Name="lvwSections" SeparatorColor="White" ItemSelected="lvwSections_ItemSelected"  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
                             <CheckBox Color="Black" Grid.Column="0" x:Name="Checkbox"  CheckedChanged="Checkbox_CheckedChanged" IsChecked="{Binding Completed}"/>
                             <Label Grid.Column="1" Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" FontSize="Medium" />
-                    </Grid>
-                </ViewCell>
+                        </Grid>
+                    </ViewCell>
 
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Button x:Name="btnCreate" FontAttributes="None" FontSize="30" Text="Create Task"/>
     </StackLayout>
 </ContentPage>

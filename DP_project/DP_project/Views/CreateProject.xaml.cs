@@ -21,6 +21,7 @@ namespace DP_project.Views
             btnCreate.Clicked += BtnCreate_Clicked;
         }
 
+
         private async void BtnCreate_Clicked(object sender, EventArgs e)
         {
             string content = entContent.Text;

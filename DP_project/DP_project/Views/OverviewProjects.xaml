@@ -3,45 +3,71 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="DP_project.Views.OverviewProjects" 
              NavigationPage.HasNavigationBar="False" >
-    <StackLayout>
-            <Grid Padding="0,0,0,-30">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="40"/>
+    <StackLayout BackgroundColor="#D1ECF6">
+        <Frame Padding="16,16,16,16" HeightRequest="35" BackgroundColor="#01B3F6"  >
 
-                </Grid.RowDefinitions>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+
+                </Grid.ColumnDefinitions>
                 
-                <Label Grid.Row="0" VerticalOptions="Center" Text="To Do List" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-            <ImageButton x:Name="btnGraph" WidthRequest="30" BackgroundColor="White"  Grid.Row="0" Source="icon2.png" HorizontalOptions="End" Margin="0,0,10,0"/>
-                <Label Grid.Row="1"  Text="Tasks"  FontSize="Default" Padding="5,0,0,0" TextColor="Black" />
-                <Label Grid.Row="1" Text="Incomplete"  FontSize="Default" Padding="170,0,0,0" TextColor="Black" HorizontalOptions="Center"/>
-                <Label Grid.Row="1" Text="Complete"  FontSize="Default" Padding="0,0,5,0" TextColor="Black" HorizontalOptions="End"/>
+                <Label Grid.ColumnSpan="2" VerticalOptions="Center" Text="To Do List" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
+                <ImageButton x:Name="btnGraph" WidthRequest="30" BackgroundColor="#01B3F6"  Grid.Column="1" Source="icon2.png" HorizontalOptions="End" />
+            </Grid>
+        </Frame>
+        <StackLayout HeightRequest="25"  Padding="16,0,16,-8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45" />
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="85" />
+                </Grid.ColumnDefinitions>
+                <Label  Text="Tasks"  FontSize="Default" Padding="-10,0,0,0" TextColor="Black" />
+                <Label Grid.Column="3" Text="Incomplete"  FontSize="Default"  TextColor="Black" HorizontalOptions="Center"/>
+                <Label Grid.Column="4" Text="Complete"  FontSize="Default"  TextColor="Black" HorizontalOptions="End"/>
 
             </Grid>
+        </StackLayout>
 
-
-            <ListView x:Name="lvwProjects" SeparatorColor="White" ItemSelected="lvwProjects_ItemSelected" Margin="0,10,0,0" SeparatorVisibility="None" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="45" />
-                                    <ColumnDefinition Width="120"/>
-                                    <ColumnDefinition Width="70" />
-                                    <ColumnDefinition Width="85" />
+        <StackLayout  Padding="16,0,16,16">
+        <ListView x:Name="lvwProjects" SeparatorColor="White" ItemSelected="lvwProjects_ItemSelected"  SeparatorVisibility="None" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="85" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="4" Text="{Binding CountofComplete}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Medium" />
-                                <Label Grid.Column="3" Text="{Binding CountofIncomplete}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Medium" />
-                                <Label Text="{Binding CountofTasks}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Medium" />
-                                <Label FontSize="Medium" Grid.Column="1" Text="{Binding Name}"  TextColor="Black" VerticalOptions="Center" />
-                            </Grid>
-                        </ViewCell>
 
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button x:Name="btnCreate" FontAttributes="None" FontSize="30" Text="Create Project"/>
+                            <Label Grid.Column="4" Text="{Binding CountofComplete}" Padding="4,0,0,0" VerticalOptions="Center" TextColor="Black" FontSize="Medium" />
+                                <Label  Grid.Column="3" Text="{Binding CountofIncomplete}" Padding="4,0,0,0" VerticalOptions="Center" TextColor="Black" FontSize="Medium" />
+                            <Label  Text="{Binding CountofTasks}" Padding="-18,0,0,0" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="Medium" />
+                            <Label FontSize="Medium" Grid.Column="1" Text="{Binding Name}"  TextColor="Black" VerticalOptions="Center" />
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
+        <StackLayout>
+            <Button x:Name="btnCreate"
+    WidthRequest="80"
+    HeightRequest="80"
+    CornerRadius="100"
+    BorderWidth="2"
+    BorderColor="Gray"
+                HorizontalOptions="End"
+                FontSize="40"
+                FontAttributes="Bold"
+    Text="+"/>
+        </StackLayout >
         </StackLayout>
 </ContentPage>
