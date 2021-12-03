@@ -10,10 +10,9 @@
                     <RowDefinition Height="40"/>
 
                 </Grid.RowDefinitions>
+                
                 <Label Grid.Row="0" VerticalOptions="Center" Text="To Do List" TextColor="Black" FontSize="Large" HorizontalOptions="Center"/>
-
-                <Button Grid.Row="0" x:Name="btnGraph"  FontSize="20" Text="Graph" HorizontalOptions="End">
-                </Button>
+            <ImageButton x:Name="btnGraph" WidthRequest="30" BackgroundColor="White"  Grid.Row="0" Source="icon2.png" HorizontalOptions="End" Margin="0,0,10,0"/>
                 <Label Grid.Row="1"  Text="Tasks"  FontSize="Default" Padding="5,0,0,0" TextColor="Black" />
                 <Label Grid.Row="1" Text="Incomplete"  FontSize="Default" Padding="170,0,0,0" TextColor="Black" HorizontalOptions="Center"/>
                 <Label Grid.Row="1" Text="Complete"  FontSize="Default" Padding="0,0,5,0" TextColor="Black" HorizontalOptions="End"/>

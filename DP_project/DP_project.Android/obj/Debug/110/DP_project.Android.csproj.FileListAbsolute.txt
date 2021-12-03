@@ -597,3 +597,5 @@ C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\android
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\android\src\crc64bb223c2be3a01e03\SKGLViewRenderer.java
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\android\src\crc64bb223c2be3a01e03\SKGLViewRendererBase_2.java
 C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\android\src\crc64e9f97cf19b8286a9\ChartView.java
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\res\drawable\icon2.png
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\110\res\drawable\arrowleft.png

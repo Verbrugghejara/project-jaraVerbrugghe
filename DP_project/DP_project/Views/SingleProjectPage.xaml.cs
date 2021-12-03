@@ -24,6 +24,7 @@ namespace DP_project.Views
             MyProject = project;
             ShowSingleProject();
             btnCreate.Clicked += btnCreate_Clicked;
+            //btnBack.Clicked += btnBack_Clicked;
         }
 
 
@@ -74,5 +75,6 @@ namespace DP_project.Views
                 Debug.WriteLine("false");
             }
         }
+
     }
 }
