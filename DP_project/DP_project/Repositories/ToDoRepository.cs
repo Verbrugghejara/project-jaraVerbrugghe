@@ -17,9 +17,6 @@ namespace DP_project.Repositories
         private const string _URL = "https://api.todoist.com/rest/v1/";
 
 
-
-
-
         private static HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
@@ -46,40 +43,8 @@ namespace DP_project.Repositories
         {
             return $"{_URL}{topic}/{id}";
         }
-        //private static string AddTopicWithId(string topic, string id)
-        //{
-        //    return $"{_URL}{topic}?project_id={id}";
-        //}
 
         //------------------------------------------------ TASKS -------------------------------------------------
-        //public static async Task<List<Item>> GetAllTasksAsync()
-
-        //{
-        //    using (HttpClient client = GetClient())
-        //    {
-        //        try
-        //        {
-        //            string url = AddTopic("tasks");
-        //            string json = await client.GetStringAsync(url);
-        //            if (json != null)
-        //            {
-        //                //var o = JObject.Parse(json);
-        //                Debug.WriteLine("klaar");
-        //                var jsonString = JsonConvert.DeserializeObject<List<Item>>(json);
-
-
-
-        //            }
-        //            return null;
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            throw ex;
-        //        }
-        //    }
-        //}
-
         public static async Task<List<Item>> GetTasksByProjectIdAsync(uint id)
 
         {
@@ -197,33 +162,6 @@ namespace DP_project.Repositories
                         throw new Exception("Something went wrong with the update of ToDoList");
                     }
                     Debug.WriteLine("gelukt");
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-            }
-        }
-        public static async Task<List<Item>> GetTasksCompletedAsync()
-
-        {
-            using (HttpClient client = GetClient())
-            {
-                try
-                {
-                    string url = "https://api.todoist.com/sync/v8/completed/get_all";
-                    string json = await client.GetStringAsync(url);
-                    if (json != null)
-                    {
-                        //var o = JObject.Parse(json);
-                        Debug.WriteLine("klaar");
-                        var jsonString = JsonConvert.DeserializeObject<List<Note>>(json);
-
-
-
-                    }
-                    return null;
                 }
                 catch (Exception ex)
                 {
@@ -410,35 +348,6 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task UpdateProject(Project project)
-        {
-            using (HttpClient client = GetClient())
-            {
-                try
-                {
-
-                    //int n = project.Id;
-                    //uint i = Convert.ToUInt32(n);
-                    string url = AddTopic3("projects", project.Id);
-
-
-                    string json = JsonConvert.SerializeObject(project); //serialize is om van variabele naar een string te gaan
-                    HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(url, content);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception("Something went wrong with the update of ToDoList");
-                    }
-                    Debug.WriteLine("gelukt");
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-            }
-        }
         public static async Task CreateProject(Project project)
         {
             using (HttpClient client = GetClient())
@@ -465,151 +374,6 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task DeleteProject(string id)
-        {
-            using (HttpClient client = GetClient())
-            {
-                try
-                {
-                    string url = AddTopic2("projects", id);
-
-                    var response = await client.DeleteAsync(url);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception("Something went wrong with the update of ToDoList");
-                    }
-                    Debug.WriteLine("gelukt");
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-            }
-        }
-
-        //------------------------------------------------ SECTION -------------------------------------------------
-
-        //public static async Task<List<Section>> GetAllSectionsAsync(string id)
-        //{
-        //    using (HttpClient client = GetClient())
-        //    {
-        //        try
-        //        {
-        //            string url = AddTopicWithId("sections",id);
-        //            string json = await client.GetStringAsync(url);
-        //            if (json != null)
-        //            {
-        //                //var o = JObject.Parse(json);
-        //                return JsonConvert.DeserializeObject<List<Section>>(json);
-        //            }
-        //            return null;
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            throw ex;
-        //        }
-        //    }
-        //}
-        //public static async Task<List<Section>> GetSectiontByIdAsync(string id)
-        //{
-        //    using (HttpClient client = GetClient())
-        //    {
-        //        try
-        //        {
-        //            string url = AddTopic2("sections", id);
-        //            string json = await client.GetStringAsync(url);
-        //            if (json != null)
-        //            {
-        //                //var o = JObject.Parse(json);
-        //                return JsonConvert.DeserializeObject<List<Section>>("[" + json + "]");
-        //            }
-        //            return null;
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            throw ex;
-        //        }
-        //    }
-        //}
-        //public static async Task UpdateSection(Section section)
-        //{
-        //    using (HttpClient client = GetClient())
-        //    {
-        //        try
-        //        {
-        //            string url = AddTopic2("sections", section.Id);
-
-
-        //            string json = JsonConvert.SerializeObject(section); //serialize is om van variabele naar een string te gaan
-        //            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-        //            var response = await client.PostAsync(url, content);
-
-        //            if (!response.IsSuccessStatusCode)
-        //            {
-        //                throw new Exception("Something went wrong with the update of ToDoList");
-        //            }
-        //            Debug.WriteLine("gelukt");
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            throw ex;
-        //        }
-        //    }
-        //}
-        //public static async Task CreateSection(Section section)
-        //{
-        //    using (HttpClient client = GetClient())
-        //    {
-        //        try
-        //        {
-        //            string url = AddTopic("sections");
-
-
-        //            string json = JsonConvert.SerializeObject(section); //serialize is om van variabele naar een string te gaan
-        //            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-        //            var response = await client.PostAsync(url, content);
-
-        //            if (!response.IsSuccessStatusCode)
-        //            {
-        //                throw new Exception("Something went wrong with the create of section ");
-        //            }
-        //            Debug.WriteLine("gelukt");
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            throw ex;
-        //        }
-        //    }
-        //}
-        //public static async Task DeleteSection(string id)
-        //{
-        //    using (HttpClient client = GetClient())
-        //    {
-        //        try
-        //        {
-        //            string url = AddTopic2("Sections", id);
-
-        //            var response = await client.DeleteAsync(url);
-
-        //            if (!response.IsSuccessStatusCode)
-        //            {
-        //                throw new Exception("Something went wrong with the update of ToDoList");
-        //            }
-        //            Debug.WriteLine("gelukt");
-        //        }
-        //        catch (Exception ex)
-        //        {
-
-        //            throw ex;
-        //        }
-        //    }
-        //}
 
     }
 }
