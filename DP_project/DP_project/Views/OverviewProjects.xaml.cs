@@ -80,14 +80,9 @@ namespace DP_project.Views
             List<Project> projects = await ToDoRepository.GetProjectsAsync();
             foreach (var project in projects)
             {
-                List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
-                Debug.WriteLine(tasks.Count);
 
-                foreach (var item in tasks)
-                {
-                    Debug.WriteLine(item.Name);
-                }
-                
+                Debug.WriteLine(project.CountofTasks);
+
             }
             //////var taskid = tasks[0].Id;
             //////await ToDoListRepository.DeleteTask(taskid);
@@ -232,13 +227,15 @@ namespace DP_project.Views
 
         }
 
-        private void picker_SelectedIndexChanged(object sender, EventArgs e)
+        private async void picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             string selectedIndex = picker.SelectedItem.ToString();
             string result = selectedIndex.Remove(selectedIndex.Length - 1);
             int cijfer = Int32.Parse(result);
             Console.WriteLine(cijfer);
+            List<Project> projects = await ToDoRepository.GetProjectsWithPercentageAsync(cijfer);
+            lvwProjects.ItemsSource = projects;
         }
     }
 

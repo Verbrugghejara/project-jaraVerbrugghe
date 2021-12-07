@@ -374,6 +374,67 @@ namespace DP_project.Repositories
                 }
             }
         }
+        public static async Task<List<Project>> GetProjectsWithPercentageAsync(int number)
+        {
+            using (HttpClient client = GetClient())
+            {
+                try
+                {
+                    List<Project> newprojects = new List<Project>();
+                    List<Project> projects = await GetProjectsAsync();
+                    foreach (var item in projects)
+                    {
+                        int percentage = 0;
+                        int minNumber=0;
+                        int maxNumber=0;
+                        int complete = item.CountofComplete;
+                        int tasks = item.CountofTasks;
+                        if (complete!=0)
+                        {
+                            percentage = complete / tasks * 100;
+                        }
+                        if (number == 0)
+                        {
+                            minNumber = number;
+                            maxNumber = number+25;
+                        }
+                        if (number == 25)
+                        {
+                            minNumber = number-25;
+                            maxNumber = number + 25;
+                        }
+                        if (number == 50)
+                        {
+                            minNumber = number - 25;
+                            maxNumber = number + 25;
+                        }
+                        if (number == 75)
+                        {
+                            minNumber = number - 25;
+                            maxNumber = number + 25;
+                        }
+                        if (number == 100)
+                        {
+                            minNumber = number - 25;
+                            maxNumber = number;
+                        }
+
+                        if (minNumber <= percentage && maxNumber >= percentage )
+                        {
+                            newprojects.Add(item);
+                        }
+                    }
+
+
+                    return projects;
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+        }
 
     }
 }
