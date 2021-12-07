@@ -25,6 +25,19 @@ namespace DP_project.Views
             TestRepositories();
             btnCreate.Clicked += btnCreate_Clicked;
             btnGraph.Clicked += btnGraph_Clicked;
+            ShowPicker();
+        }
+
+        private void ShowPicker()
+        {
+            var percentages = new List<string>();
+            percentages.Add("0%");
+            percentages.Add("25%");
+            percentages.Add("50%");
+            percentages.Add("75%");
+            percentages.Add("100%");
+            var picker = new Picker { Title = "Select a percentage" };
+            picker.ItemsSource = percentages;
         }
 
         private async void btnGraph_Clicked(object sender, EventArgs e)
@@ -219,6 +232,14 @@ namespace DP_project.Views
 
         }
 
+        private void picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            string selectedIndex = picker.SelectedItem.ToString();
+            string result = selectedIndex.Remove(selectedIndex.Length - 1);
+            int cijfer = Int32.Parse(result);
+            Console.WriteLine(cijfer);
+        }
     }
 
 

@@ -13,11 +13,36 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.ColumnSpan="2" HeightRequest="46" VerticalOptions="Center" FontAttributes="Bold" Text="To Do List" TextColor="#005D80" FontSize="28" HorizontalOptions="Center"/>
+                <Label Grid.ColumnSpan="2" HeightRequest="50" VerticalOptions="Center" FontAttributes="Bold" Text="To Do List" TextColor="#005D80" FontSize="28" HorizontalOptions="Center"/>
                 <ImageButton x:Name="btnGraph" WidthRequest="30" BackgroundColor="#01B3F6"  Grid.Column="1" Source="icon2.png" HorizontalOptions="End" />
             </Grid>
         </StackLayout>
-        <StackLayout HeightRequest="30"  Padding="16,0,16,-8">
+
+
+        <StackLayout HeightRequest="65" Padding="8,0,16,0" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="156" />
+                    <ColumnDefinition  />
+
+                </Grid.ColumnDefinitions>
+                <Label FontSize="14" VerticalOptions="Center" Grid.Column="0" Text="Filter of completed tasks:" HorizontalOptions="Start"/>
+                <Picker SelectedIndexChanged="picker_SelectedIndexChanged" FontSize="15" Grid.Column="1" x:Name="picker" Title="Select a percentage" HorizontalOptions="Start">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>0%</x:String>
+                            <x:String>25%</x:String>
+                            <x:String>50%</x:String>
+                            <x:String>75%</x:String>
+                            <x:String>100%</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+
+                </Picker>
+            </Grid>
+
+    </StackLayout>
+    <StackLayout HeightRequest="30"  Padding="16,0,16,-8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="45" />
