@@ -16,8 +16,7 @@ namespace DP_project
             InitializeComponent();
 
             // MainPage = new MainPage();
-            List<Project> projects = new List<Project>();
-            MainPage = new NavigationPage(new OverviewProjects(projects))
+            MainPage = new NavigationPage(new OverviewProjects())
             {
                 BarBackgroundColor = Color.FromHex("#01B3F6"),
                 BarTextColor = Color.Black

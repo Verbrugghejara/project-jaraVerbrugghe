@@ -6,7 +6,7 @@
 
 
     <StackLayout  BackgroundColor="#DDEFF6">
-        <Frame Padding="16,8,16,16" HeightRequest="55" BackgroundColor="#01B3F6">
+        <Frame Padding="0,8,0,10" HeightRequest="55" BackgroundColor="#01B3F6">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>

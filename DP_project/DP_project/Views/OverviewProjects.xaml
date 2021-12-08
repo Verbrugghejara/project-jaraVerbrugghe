@@ -30,10 +30,11 @@
                 <Picker SelectedIndexChanged="picker_SelectedIndexChanged" FontSize="15" Grid.Column="1" x:Name="picker" Title="Select a percentage" HorizontalOptions="Start">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>0%</x:String>
-                            <x:String>25%</x:String>
-                            <x:String>50%</x:String>
-                            <x:String>75%</x:String>
+                            <x:String>All</x:String>
+                            <x:String>0% - 24%</x:String>
+                            <x:String>25% - 49%</x:String>
+                            <x:String>50% - 74%</x:String>
+                            <x:String>75% - 99%</x:String>
                             <x:String>100%</x:String>
                         </x:Array>
                     </Picker.ItemsSource>

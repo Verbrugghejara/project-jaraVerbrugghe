@@ -403,22 +403,22 @@ namespace DP_project.Repositories
                         }
                         if (number == 25)
                         {
-                            minNumber = number-25;
-                            maxNumber = number + 25;
+                            minNumber = number;
+                            maxNumber = number + 24;
                         }
                         if (number == 50)
                         {
-                            minNumber = number - 25;
-                            maxNumber = number + 25;
+                            minNumber = number;
+                            maxNumber = number + 24;
                         }
                         if (number == 75)
                         {
-                            minNumber = number - 25;
-                            maxNumber = number + 25;
+                            minNumber = number;
+                            maxNumber = number + 24;
                         }
                         if (number == 100)
                         {
-                            minNumber = number - 25;
+                            minNumber = number;
                             maxNumber = number;
                         }
 
@@ -438,19 +438,6 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task<List<Project>> GetProjectsWithCountsAsync()
-        {
-            List<Project> projects = await ToDoRepository.GetProjectsAsync();
-            foreach (var project in projects)
-            {
-                List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
-
-                List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(project.Id);
-                project.CountofTasks = items.Count + tasks.Count;
-                project.CountofComplete = tasks.Count;
-
-            }
-            return projects;
-        }
+       
     }
 }

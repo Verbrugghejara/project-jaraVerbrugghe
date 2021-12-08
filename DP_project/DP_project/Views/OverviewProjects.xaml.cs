@@ -17,8 +17,7 @@ namespace DP_project.Views
     public partial class OverviewProjects : ContentPage
     {
 
-        public List<Project> MyProject { get; set; }
-        public OverviewProjects(List<Project> projects)
+        public OverviewProjects()
         {
             InitializeComponent();
             ShowProjects();
@@ -26,16 +25,16 @@ namespace DP_project.Views
             btnCreate.Clicked += btnCreate_Clicked;
             btnGraph.Clicked += btnGraph_Clicked;
             ShowPicker();
-            MyProject = projects;
         }
 
         private void ShowPicker()
         {
             var percentages = new List<string>();
-            percentages.Add("0%");
-            percentages.Add("25%");
-            percentages.Add("50%");
-            percentages.Add("75%");
+            percentages.Add("All");
+            percentages.Add("0% - 24%");
+            percentages.Add("25% - 49%");
+            percentages.Add("50% - 74%");
+            percentages.Add("75% - 99%");
             percentages.Add("100%");
             var picker = new Picker { Title = "Select a percentage" };
             picker.ItemsSource = percentages;
@@ -202,15 +201,7 @@ namespace DP_project.Views
 
                 
             }
-            if (this.MyProject.Count==0)
-            {
-
                 lvwProjects.ItemsSource = projects;
-            }
-            else
-            {
-                lvwProjects.ItemsSource = MyProject;
-            }
         }
 
         private async void lvwProjects_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -228,13 +219,36 @@ namespace DP_project.Views
         {
             var picker = (Picker)sender;
             string selectedIndex = picker.SelectedItem.ToString();
-            string result = selectedIndex.Remove(selectedIndex.Length - 1);
-            int cijfer = Int32.Parse(result);
-            Console.WriteLine(cijfer); 
+            if (selectedIndex =="All")
+            {
+
+                List<Project> projects = await ToDoRepository.GetProjectsAsync();
+                foreach (var project in projects)
+                {
+                    List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
+
+                    List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(project.Id);
+                    project.CountofTasks = items.Count + tasks.Count;
+                    project.CountofComplete = tasks.Count;
+
+
+                }
+
+                lvwProjects.ItemsSource = null;
+                lvwProjects.ItemsSource = projects;
+            }
+            else
+            {
+                string result = selectedIndex.Remove(selectedIndex.Length - 1);
+                int cijfer = Int32.Parse(result);
+                Console.WriteLine(cijfer);
+
+                lvwProjects.ItemsSource = null;
+                List<Project> projectss = await ToDoRepository.GetProjectsWithPercentageAsync(cijfer);
+                lvwProjects.ItemsSource = projectss;
+            }
             
-            List<Project> projectss = await ToDoRepository.GetProjectsWithPercentageAsync(cijfer);
-            MyProject = projectss;
-            await Navigation.PushAsync(new OverviewProjects(projectss));
+
         }
     }
 

@@ -38,8 +38,7 @@ namespace DP_project.Views
 
         private async void btnBack_Clicked(object sender, EventArgs e)
         {
-            List<Project> projects = new List<Project>();
-            await Navigation.PushAsync(new OverviewProjects(projects));
+            await Navigation.PushAsync(new OverviewProjects());
         }
 
         private async void btnCreate_Clicked(object sender, EventArgs e)
