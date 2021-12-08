@@ -31,7 +31,8 @@ namespace DP_project.Views
             uint vOut = Convert.ToUInt32(GenerateNumber());
             project.Id = vOut;
             await ToDoRepository.CreateProject(project);
-            await Navigation.PushAsync(new OverviewProjects());
+            List<Project> projects = new List<Project>();
+            await Navigation.PushAsync(new OverviewProjects(projects));
         }
         public string GenerateNumber()
         {

@@ -11,13 +11,13 @@ namespace DP_project
 {
     public partial class App : Application
     {
-        public Project MyProject { get; set; }
-        public App()
+        public  App()
         {
             InitializeComponent();
 
             // MainPage = new MainPage();
-            MainPage = new NavigationPage(new OverviewProjects())
+            List<Project> projects = new List<Project>();
+            MainPage = new NavigationPage(new OverviewProjects(projects))
             {
                 BarBackgroundColor = Color.FromHex("#01B3F6"),
                 BarTextColor = Color.Black

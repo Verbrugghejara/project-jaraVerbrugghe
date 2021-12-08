@@ -384,14 +384,17 @@ namespace DP_project.Repositories
                     List<Project> projects = await GetProjectsAsync();
                     foreach (var item in projects)
                     {
-                        int percentage = 0;
+                        List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(item.Id);
+
+                        List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(item.Id);
+                        int alltasks = item.CountofTasks = items.Count + tasks.Count;
+                        int complete = item.CountofComplete = tasks.Count;
+                        double percentage = 0.0;
                         int minNumber=0;
                         int maxNumber=0;
-                        int complete = item.CountofComplete;
-                        int tasks = item.CountofTasks;
                         if (complete!=0)
                         {
-                            percentage = complete / tasks * 100;
+                            percentage = (double)complete/ (double)alltasks *100;
                         }
                         if (number == 0)
                         {
@@ -426,7 +429,7 @@ namespace DP_project.Repositories
                     }
 
 
-                    return projects;
+                    return newprojects;
                 }
                 catch (Exception ex)
                 {
@@ -435,6 +438,19 @@ namespace DP_project.Repositories
                 }
             }
         }
+        public static async Task<List<Project>> GetProjectsWithCountsAsync()
+        {
+            List<Project> projects = await ToDoRepository.GetProjectsAsync();
+            foreach (var project in projects)
+            {
+                List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
 
+                List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(project.Id);
+                project.CountofTasks = items.Count + tasks.Count;
+                project.CountofComplete = tasks.Count;
+
+            }
+            return projects;
+        }
     }
 }

@@ -17,8 +17,8 @@ namespace DP_project.Views
     public partial class OverviewProjects : ContentPage
     {
 
-      
-        public OverviewProjects()
+        public List<Project> MyProject { get; set; }
+        public OverviewProjects(List<Project> projects)
         {
             InitializeComponent();
             ShowProjects();
@@ -26,6 +26,7 @@ namespace DP_project.Views
             btnCreate.Clicked += btnCreate_Clicked;
             btnGraph.Clicked += btnGraph_Clicked;
             ShowPicker();
+            MyProject = projects;
         }
 
         private void ShowPicker()
@@ -191,17 +192,6 @@ namespace DP_project.Views
         private async void ShowProjects()
         {
             List<Project> projects = await ToDoRepository.GetProjectsAsync();
-            //foreach (var project in projects)
-            //{
-            //    List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
-            //    Debug.WriteLine(tasks.Count);
-
-            //    foreach (var item in tasks)
-            //    {
-            //        Debug.WriteLine(item.Name);
-            //    }
-
-            //}
             foreach (var project in projects)
             {
                 List<Item> tasks = await ToDoRepository.GetTasksCompletedByProjectIdAsync(project.Id);
@@ -209,10 +199,18 @@ namespace DP_project.Views
                     List<Item> items = await ToDoRepository.GetTasksByProjectIdAsync(project.Id);
                 project.CountofTasks = items.Count+tasks.Count;
                 project.CountofComplete = tasks.Count;
+
                 
             }
-            
-            lvwProjects.ItemsSource = projects;
+            if (this.MyProject.Count==0)
+            {
+
+                lvwProjects.ItemsSource = projects;
+            }
+            else
+            {
+                lvwProjects.ItemsSource = MyProject;
+            }
         }
 
         private async void lvwProjects_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -226,16 +224,17 @@ namespace DP_project.Views
             }
 
         }
-
         private async void picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             string selectedIndex = picker.SelectedItem.ToString();
             string result = selectedIndex.Remove(selectedIndex.Length - 1);
             int cijfer = Int32.Parse(result);
-            Console.WriteLine(cijfer);
-            List<Project> projects = await ToDoRepository.GetProjectsWithPercentageAsync(cijfer);
-            lvwProjects.ItemsSource = projects;
+            Console.WriteLine(cijfer); 
+            
+            List<Project> projectss = await ToDoRepository.GetProjectsWithPercentageAsync(cijfer);
+            MyProject = projectss;
+            await Navigation.PushAsync(new OverviewProjects(projectss));
         }
     }
 
