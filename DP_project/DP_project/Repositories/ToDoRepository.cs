@@ -58,7 +58,6 @@ namespace DP_project.Repositories
                     if (json != null)
                     {
                         //var o = JObject.Parse(json);
-                        Debug.WriteLine("klaar");
                         var jsonString = JsonConvert.DeserializeObject<List<Item>>(json);
                         foreach (var itemt in jsonString)
                         {
@@ -111,7 +110,6 @@ namespace DP_project.Repositories
                     {
                         throw new Exception("Something went wrong with the update of task");
                     }
-                    Debug.WriteLine("gelukt");
                 }
                 catch (Exception ex)
                 {
@@ -133,12 +131,7 @@ namespace DP_project.Repositories
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(url, content);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        var result = response.StatusCode.ToString();
-                        Debug.WriteLine(result);
-                    }
-                    Debug.WriteLine("gelukt");
+                    
                 }
                 catch (Exception ex)
                 {
@@ -161,7 +154,6 @@ namespace DP_project.Repositories
                     {
                         throw new Exception("Something went wrong with the update of ToDoList");
                     }
-                    Debug.WriteLine("gelukt");
                 }
                 catch (Exception ex)
                 {
@@ -185,8 +177,6 @@ namespace DP_project.Repositories
 
                     if (json != null)
                     {
-                        //var o = JObject.Parse(json);
-                        Debug.WriteLine("klaar");
                         var jsonString = JsonConvert.DeserializeObject<List<CompletedNotes>>(newJson);
                         foreach (var itemt in jsonString)
                         {
@@ -221,9 +211,6 @@ namespace DP_project.Repositories
 
                 foreach (var itemt in list)
                 {
-                    Debug.WriteLine(itemt.Id);
-                    Debug.WriteLine(itemt.TaskId);
-                    Debug.WriteLine(itemt.Name);
                     if (itemt.TaskId == null)
                     {
                         //List<Item> tasks1 = await GetTasksByIDAsync(itemt.TaskId);
@@ -261,12 +248,6 @@ namespace DP_project.Repositories
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(url + "/close", null);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        var result = response.StatusCode.ToString();
-                        Debug.WriteLine(result);
-                    }
-                    Debug.WriteLine("gelukt");
                 }
                 catch (Exception ex)
                 {
@@ -288,12 +269,6 @@ namespace DP_project.Repositories
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(url + "/reopen", null);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        var result = response.StatusCode.ToString();
-                        Debug.WriteLine(result);
-                    }
-                    Debug.WriteLine("gelukt");
                 }
                 catch (Exception ex)
                 {
@@ -361,11 +336,6 @@ namespace DP_project.Repositories
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(url, content);
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        throw new Exception("Something went wrong with the update of ToDoList");
-                    }
-                    Debug.WriteLine("gelukt");
                 }
                 catch (Exception ex)
                 {
