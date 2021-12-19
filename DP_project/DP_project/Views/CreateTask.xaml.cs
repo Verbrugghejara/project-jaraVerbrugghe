@@ -31,14 +31,15 @@ namespace DP_project.Views
             Debug.WriteLine(MyNote.ProjectId);
             Debug.WriteLine("hoi");
             Item note = MyNote;
-            note.Id = GenerateNumber().ToString();
             note.Name = content;
+            note.TaskId = GenerateNumber();
             note.ProjectId = MyProject.Id;
-            await ToDoRepository.CreateTask(note);
+            await ToDoRepository.CreateTaskAsync(note);
             await Navigation.PushAsync(new SingleProjectPage(MyProject));
         }
         public string GenerateNumber()
         {
+           
             Random random = new Random();
             string r = "";
             int i;

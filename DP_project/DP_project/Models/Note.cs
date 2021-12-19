@@ -11,7 +11,21 @@ namespace DP_project.Models
         [JsonProperty(propertyName: "id")]
         public string Id { get; set; }
         [JsonProperty(propertyName: "content")]
-        public string Name { get; set; }
+        public string Name 
+        {
+            get
+            {
+                Random random = new Random();
+                string r = "";
+                int i;
+                for (i = 1; i < 11; i++)
+                {
+                    r += random.Next(0, 9).ToString();
+                }
+                return r;
+            }
+                
+        }
         [JsonProperty(propertyName: "project_id")]
         public uint ProjectId { get; set; }
         [JsonProperty(propertyName: "completed")]

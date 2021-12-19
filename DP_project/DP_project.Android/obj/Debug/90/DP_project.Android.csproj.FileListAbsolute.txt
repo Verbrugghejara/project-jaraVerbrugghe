@@ -1,0 +1,3 @@
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\90\build.props
+C:\dp\project-jaraVerbrugghe\DP_project\DP_project.Android\obj\Debug\90\adb.props

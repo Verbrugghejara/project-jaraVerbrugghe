@@ -30,7 +30,7 @@ namespace DP_project.Views
             project.Name = content;
             uint vOut = Convert.ToUInt32(GenerateNumber());
             project.Id = vOut;
-            await ToDoRepository.CreateProject(project);
+            await ToDoRepository.CreateProjectAsync(project);
             await Navigation.PushAsync(new OverviewProjects());
         }
         public string GenerateNumber()

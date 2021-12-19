@@ -118,7 +118,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task CreateTask(Item toDoTask)
+        public static async Task CreateTaskAsync(Item toDoTask)
         {
             using (HttpClient client = GetClient())
             {
@@ -140,7 +140,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task DeleteTask(string id)
+        public static async Task DeleteTaskAsync(string id)
         {
             using (HttpClient client = GetClient())
             {
@@ -323,7 +323,7 @@ namespace DP_project.Repositories
                 }
             }
         }
-        public static async Task CreateProject(Project project)
+        public static async Task CreateProjectAsync(Project project)
         {
             using (HttpClient client = GetClient())
             {

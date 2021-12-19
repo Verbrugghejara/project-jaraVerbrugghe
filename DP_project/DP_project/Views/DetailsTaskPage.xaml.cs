@@ -37,7 +37,7 @@ namespace DP_project.Views
         private async void BtnDelete_Clicked(object sender, EventArgs e)
         {
 
-                await ToDoRepository.DeleteTask(MyNote.Id);
+                await ToDoRepository.DeleteTaskAsync(MyNote.Id);
                 await Navigation.PushAsync(new SingleProjectPage(MyProject));
             
         }
